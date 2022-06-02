@@ -11,6 +11,7 @@ signal request_finished(task_infos)
 
 # Public variables
 enum {OK, VOID_DATA}
+const R_CATEGORY = []
 
 const _recipe_document_body: Dictionary = {
 #	"creation_date": "",
