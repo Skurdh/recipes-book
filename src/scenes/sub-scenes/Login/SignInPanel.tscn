@@ -1,0 +1,182 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/fonts/PT-Bold_16.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/PT-Italic_16.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/PT-Regular_16.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/fonts/PTSerif-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://src/scenes/sub-scenes/Login/SignInPanel.gd" type="Script" id=5]
+[ext_resource path="res://assets/themes/PanelStyleBoxFlat.tres" type="StyleBox" id=6]
+[ext_resource path="res://assets/themes/Button_Custom_Normal.tres" type="StyleBox" id=7]
+[ext_resource path="res://assets/themes/Button_Custom_Hover.tres" type="StyleBox" id=8]
+[ext_resource path="res://assets/themes/Button_Custom_Pressed.tres" type="StyleBox" id=9]
+[ext_resource path="res://assets/fonts/PT-Regular_16_Button.tres" type="DynamicFont" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+size = 27
+font_data = ExtResource( 4 )
+
+[node name="SignInPanel" type="PanelContainer"]
+margin_right = 380.0
+margin_bottom = 380.0
+rect_min_size = Vector2( 380, 380 )
+size_flags_vertical = 6
+custom_styles/panel = ExtResource( 6 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 379.0
+margin_bottom = 379.0
+custom_constants/margin_right = 18
+custom_constants/margin_top = 12
+custom_constants/margin_left = 18
+custom_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 18.0
+margin_top = 12.0
+margin_right = 360.0
+margin_bottom = 370.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_right = 342.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 0, 56 )
+custom_fonts/font = SubResource( 1 )
+text = "Connexion"
+align = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 60.0
+margin_right = 342.0
+margin_bottom = 90.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EmailLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 52.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 1 )
+text = "Email"
+valign = 1
+
+[node name="Error" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 52.0
+margin_right = 60.0
+margin_bottom = 30.0
+custom_colors/font_color = Color( 0.737255, 0.203922, 0.203922, 1 )
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+
+[node name="EmailLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer"]
+margin_top = 94.0
+margin_right = 342.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 0, 36 )
+custom_fonts/font = ExtResource( 10 )
+text = "vinegraphe@gmail.com"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 134.0
+margin_right = 342.0
+margin_bottom = 164.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PasswordLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+margin_right = 108.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 1 )
+text = "Mot de passe"
+valign = 1
+
+[node name="Error" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 108.0
+margin_right = 116.0
+margin_bottom = 30.0
+custom_colors/font_color = Color( 0.738281, 0.204758, 0.204758, 1 )
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+
+[node name="PasswordLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer"]
+margin_top = 168.0
+margin_right = 342.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 0, 36 )
+custom_fonts/font = ExtResource( 10 )
+text = "jormun"
+secret = true
+
+[node name="ForgetPassword" type="ToolButton" parent="MarginContainer/VBoxContainer"]
+margin_top = 208.0
+margin_right = 342.0
+margin_bottom = 233.0
+custom_colors/font_color = Color( 0.396078, 0.560784, 0.811765, 1 )
+custom_colors/font_color_hover = Color( 0.505882, 0.658824, 0.894118, 1 )
+custom_colors/font_color_pressed = Color( 0.396078, 0.560784, 0.811765, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Mot de passe oublié ?"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SignIn" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 248.0
+margin_right = 342.0
+margin_bottom = 284.0
+rect_min_size = Vector2( 0, 36 )
+focus_mode = 0
+size_flags_vertical = 6
+custom_colors/font_color = Color( 0.874786, 0.878754, 0.888672, 1 )
+custom_colors/font_color_hover = Color( 0.87451, 0.878431, 0.890196, 1 )
+custom_colors/font_color_pressed = Color( 0.87451, 0.878431, 0.890196, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/normal = ExtResource( 7 )
+enabled_focus_mode = 0
+text = "Se connecter"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 316.0
+margin_right = 342.0
+margin_bottom = 341.0
+size_flags_vertical = 6
+custom_constants/separation = -5
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 175.0
+margin_bottom = 25.0
+custom_fonts/font = ExtResource( 3 )
+text = "Pas encore de compte ?"
+
+[node name="CreateAccount" type="ToolButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 170.0
+margin_right = 249.0
+margin_bottom = 25.0
+size_flags_vertical = 6
+custom_colors/font_color = Color( 0.396078, 0.560784, 0.811765, 1 )
+custom_colors/font_color_hover = Color( 0.505882, 0.658824, 0.894118, 1 )
+custom_colors/font_color_pressed = Color( 0.396078, 0.560784, 0.811765, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "S'inscrire"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ForgetPassword" to="." method="_on_ForgetPassword_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SignIn" to="." method="_on_SignIn_pressed"]

@@ -1,0 +1,165 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/themes/PanelStyleBoxFlat.tres" type="StyleBox" id=1]
+[ext_resource path="res://assets/textures/icons/enlarge.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/icons/cross.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/PT-Regular_16_Button.tres" type="DynamicFont" id=4]
+[ext_resource path="res://src/interfaces/Pages/CustomPopup.gd" type="Script" id=5]
+[ext_resource path="res://assets/fonts/PT-Italic_14.tres" type="DynamicFont" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.184746, 0.212876, 0.283203, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.14902, 0.172549, 0.231373, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.12549, 0.145098, 0.192157, 1 )
+
+[node name="CustomPopup" type="Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+input_pass_on_modal_close_click = false
+popup_exclusive = true
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = true
+custom_styles/panel = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 6
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+margin_left = 16.0
+margin_top = 6.0
+margin_right = 1904.0
+margin_bottom = 1074.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopBar" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+margin_right = 1888.0
+margin_bottom = 30.0
+custom_constants/separation = 6
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/TopBar"]
+margin_right = 1718.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 6 )
+
+[node name="Enlarge" type="Button" parent="Panel/MarginContainer/VBoxContainer/TopBar"]
+margin_left = 1724.0
+margin_right = 1809.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 85, 30 )
+focus_mode = 0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+enabled_focus_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TopBar/Enlarge"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/TopBar/Enlarge/HBoxContainer"]
+modulate = Color( 0.760681, 0.773624, 0.804688, 1 )
+margin_right = 18.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 18, 18 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/TopBar/Enlarge/HBoxContainer"]
+margin_left = 18.0
+margin_right = 89.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Agrandir"
+
+[node name="Close" type="Button" parent="Panel/MarginContainer/VBoxContainer/TopBar"]
+margin_left = 1815.0
+margin_right = 1888.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 73, 30 )
+focus_mode = 0
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+enabled_focus_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/TopBar/Close"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -23.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = -4
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/TopBar/Close/HBoxContainer"]
+modulate = Color( 0.760681, 0.773624, 0.804688, 1 )
+margin_right = 18.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 18, 18 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/TopBar/Close/HBoxContainer"]
+margin_left = 14.0
+margin_right = 73.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Fermer"
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/TopBar/Enlarge" to="." method="_on_Enlarge_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/TopBar/Close" to="." method="_on_Close_pressed"]

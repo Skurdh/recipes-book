@@ -1,0 +1,204 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/fonts/PT-BoldItalic_16.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/interfaces/Fields/ComplexField.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/fonts/PT-Bold_16.tres" type="DynamicFont" id=3]
+[ext_resource path="res://src/interfaces/Fields/child/TimeField.gd" type="Script" id=4]
+[ext_resource path="res://assets/themes/Button_Custom_Pressed.tres" type="StyleBox" id=5]
+[ext_resource path="res://assets/textures/icons/Clock.png" type="Texture" id=6]
+[ext_resource path="res://assets/themes/Button_Custom_Normal.tres" type="StyleBox" id=7]
+[ext_resource path="res://assets/themes/Button_Custom_Hover.tres" type="StyleBox" id=8]
+
+[node name="TimeField" instance=ExtResource( 2 )]
+script = ExtResource( 4 )
+is_required = false
+field_nodepath = NodePath("HBoxContainer2/SelectButton")
+
+[node name="SelectButton" type="Button" parent="HBoxContainer2" index="1"]
+margin_left = 4.0
+margin_right = 1920.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 134, 36 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+toggle_mode = true
+text = "00 : 00"
+align = 0
+
+[node name="PopupPanel" type="PopupPanel" parent="HBoxContainer2/SelectButton" index="0"]
+show_behind_parent = true
+margin_top = 36.0
+margin_right = 1920.0
+margin_bottom = 182.0
+input_pass_on_modal_close_click = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/SelectButton/PopupPanel" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+custom_constants/margin_right = 18
+custom_constants/margin_top = 0
+custom_constants/margin_left = 18
+custom_constants/margin_bottom = 14
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/SelectButton/PopupPanel/MarginContainer" index="0"]
+margin_left = 18.0
+margin_right = 1886.0
+margin_bottom = 116.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 14
+alignment = 1
+
+[node name="HourVBoxContainer" type="VBoxContainer" parent="HBoxContainer2/SelectButton/PopupPanel/MarginContainer/HBoxContainer" index="0"]
+margin_left = 781.0
+margin_right = 857.0
+margin_bottom = 116.0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/SelectButton/PopupPanel/MarginContainer/HBoxContainer/HourVBoxContainer" index="0"]
+margin_top = 20.0
+margin_right = 76.0
+margin_bottom = 50.0
+custom_constants/separation = 0
+
+[node name="Label" type="Label" parent="HBoxContainer2/SelectButton/PopupPanel/MarginContainer/HBoxContainer/HourVBoxContainer/HBoxContainer" index="0"]
+margin_right = 60.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 3 )
+text = "Heure"
+align = 1
+
+[node name="Control" type="Control" parent="HBoxContainer2/SelectButton/PopupPanel/MarginContainer/HBoxContainer/HourVBoxContainer/HBoxContainer" index="1"]
+margin_left = 60.0
+margin_right = 76.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 16, 0 )
+
+[node name="HourSpinBox" type="SpinBox" parent="HBoxContainer2/SelectButton/PopupPanel/MarginContainer/HBoxContainer/HourVBoxContainer" index="1"]
+margin_top = 54.0
+margin_right = 76.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 0, 42 )
+max_value = 23.0
+rounded = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer2/SelectButton/PopupPanel/MarginContainer/HBoxContainer" index="1"]
+margin_left = 871.0
+margin_right = 884.0
+margin_bottom = 116.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer2/SelectButton/PopupPanel/MarginContainer/HBoxContainer/VBoxContainer" index="0"]
+margin_top = 26.0
+margin_right = 13.0
+margin_bottom = 56.0
+custom_fonts/font = ExtResource( 1 )
+
+[node name="Label2" type="Label" parent="HBoxContainer2/SelectButton/PopupPanel/MarginContainer/HBoxContainer/VBoxContainer" index="1"]
+margin_top = 60.0
+margin_right = 13.0
+margin_bottom = 90.0
+custom_fonts/font = ExtResource( 1 )
+text = ":"
+
+[node name="MinuteVBoxContainer2" type="VBoxContainer" parent="HBoxContainer2/SelectButton/PopupPanel/MarginContainer/HBoxContainer" index="2"]
+margin_left = 898.0
+margin_right = 977.0
+margin_bottom = 116.0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/SelectButton/PopupPanel/MarginContainer/HBoxContainer/MinuteVBoxContainer2" index="0"]
+margin_top = 20.0
+margin_right = 79.0
+margin_bottom = 50.0
+custom_constants/separation = 0
+
+[node name="Label" type="Label" parent="HBoxContainer2/SelectButton/PopupPanel/MarginContainer/HBoxContainer/MinuteVBoxContainer2/HBoxContainer" index="0"]
+margin_right = 63.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 3 )
+text = "Minute"
+align = 1
+
+[node name="Control" type="Control" parent="HBoxContainer2/SelectButton/PopupPanel/MarginContainer/HBoxContainer/MinuteVBoxContainer2/HBoxContainer" index="1"]
+margin_left = 63.0
+margin_right = 79.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 16, 0 )
+
+[node name="MinuteSpinBox" type="SpinBox" parent="HBoxContainer2/SelectButton/PopupPanel/MarginContainer/HBoxContainer/MinuteVBoxContainer2" index="1"]
+margin_top = 54.0
+margin_right = 79.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 0, 42 )
+focus_neighbour_bottom = NodePath("../../HourVBoxContainer/HourSpinBox")
+focus_next = NodePath("../../HourVBoxContainer/HourSpinBox")
+max_value = 59.0
+rounded = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer2/SelectButton/PopupPanel/MarginContainer/HBoxContainer" index="3"]
+margin_left = 991.0
+margin_right = 1087.0
+margin_bottom = 116.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer2/SelectButton/PopupPanel/MarginContainer/HBoxContainer/VBoxContainer2" index="0"]
+margin_right = 96.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 1 )
+
+[node name="Validate" type="Button" parent="HBoxContainer2/SelectButton/PopupPanel/MarginContainer/HBoxContainer/VBoxContainer2" index="1"]
+margin_top = 54.0
+margin_right = 96.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 96, 42 )
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 3 )
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = ExtResource( 7 )
+custom_styles/disabled = ExtResource( 7 )
+custom_styles/normal = ExtResource( 7 )
+text = "Valider"
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/SelectButton" index="1"]
+modulate = Color( 0.764706, 0.764706, 0.764706, 1 )
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -24.0
+margin_top = -7.0
+margin_right = -10.0
+margin_bottom = 7.0
+rect_min_size = Vector2( 14, 14 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="HBoxContainer2/SelectButton" to="." method="_on_SelectButton_pressed"]
+[connection signal="popup_hide" from="HBoxContainer2/SelectButton/PopupPanel" to="." method="_on_PopupPanel_popup_hide"]
+[connection signal="pressed" from="HBoxContainer2/SelectButton/PopupPanel/MarginContainer/HBoxContainer/VBoxContainer2/Validate" to="." method="_on_Validate_pressed"]

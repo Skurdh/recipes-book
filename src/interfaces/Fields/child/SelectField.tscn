@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/interfaces/Fields/ComplexField.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/interfaces/Fields/child/SelectField.gd" type="Script" id=2]
+
+[node name="SelectField" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+field_nodepath = NodePath("HBoxContainer2/OptionButton")
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer2" index="1"]
+margin_left = 4.0
+margin_right = 1920.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 0, 36 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "- Sélectionner -"
+items = [ "- Sélectionner -", null, true, 0, null ]
+selected = 0
+
+[connection signal="item_selected" from="HBoxContainer2/OptionButton" to="." method="_on_OptionButton_item_selected"]

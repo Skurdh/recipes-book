@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/textures/icons/qualities.png" type="Texture" id=1]
+[ext_resource path="res://src/interfaces/TypeSelector.tscn" type="PackedScene" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 32, 32 )
+
+[node name="TypeSelector" instance=ExtResource( 2 )]
+types = [ "Lourd", "Sain" ]
+
+[node name="TextureRect" parent="." index="0"]
+margin_right = 38.0
+texture = SubResource( 1 )
+
+[node name="Label" parent="." index="1"]
+margin_right = 38.0
+text = "Lourd"

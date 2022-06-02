@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/interfaces/TypeSelector.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/textures/icons/diet.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 32, 32 )
+
+[node name="DietSelector" instance=ExtResource( 1 )]
+types = [ "Poisson", "Viande", "Veggie" ]
+
+[node name="TextureRect" parent="." index="0"]
+margin_right = 47.0
+texture = SubResource( 1 )
+
+[node name="Label" parent="." index="1"]
+margin_right = 47.0
+text = "Poisson"

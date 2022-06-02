@@ -1,0 +1,225 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/fonts/PT-Bold_16.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/PT-Italic_16.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/PT-Regular_16.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/fonts/PTSerif-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://src/scenes/sub-scenes/Login/SignUpPanel.gd" type="Script" id=5]
+[ext_resource path="res://assets/themes/PanelStyleBoxFlat.tres" type="StyleBox" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 27
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.196078, 0.317647, 0.494118, 1 )
+border_width_left = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.164706, 0.270588, 0.427451, 1 )
+shadow_color = Color( 0, 0, 0, 0.329412 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.145098, 0.239216, 0.376471, 1 )
+border_width_left = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.105882, 0.172549, 0.270588, 1 )
+shadow_color = Color( 0, 0, 0, 0.329412 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.317647, 0.486275, 0.729412, 1 )
+border_width_left = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.231373, 0.368627, 0.564706, 1 )
+shadow_color = Color( 0, 0, 0, 0.329412 )
+
+[node name="SignUpPanel" type="PanelContainer"]
+margin_right = 380.0
+margin_bottom = 419.0
+rect_min_size = Vector2( 380, 428 )
+size_flags_vertical = 6
+custom_styles/panel = ExtResource( 6 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 379.0
+margin_bottom = 427.0
+custom_constants/margin_right = 18
+custom_constants/margin_top = 12
+custom_constants/margin_left = 18
+custom_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 18.0
+margin_top = 12.0
+margin_right = 360.0
+margin_bottom = 418.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_right = 342.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 0, 56 )
+custom_fonts/font = SubResource( 1 )
+text = "Créer un compte"
+align = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 60.0
+margin_right = 342.0
+margin_bottom = 90.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EmailLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 52.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 1 )
+text = "Email"
+valign = 1
+
+[node name="Error" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 52.0
+margin_right = 60.0
+margin_bottom = 30.0
+custom_colors/font_color = Color( 0.738281, 0.204758, 0.204758, 1 )
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+
+[node name="EmailLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer"]
+margin_top = 94.0
+margin_right = 342.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 0, 36 )
+custom_fonts/font = ExtResource( 3 )
+text = "loki@catland.ca"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 134.0
+margin_right = 342.0
+margin_bottom = 164.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UsernameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+margin_right = 142.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 1 )
+text = "Nom d'utilisateur"
+valign = 1
+
+[node name="Error" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+margin_left = 142.0
+margin_right = 150.0
+margin_bottom = 30.0
+custom_colors/font_color = Color( 0.738281, 0.204758, 0.204758, 1 )
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+
+[node name="UsernameLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer"]
+margin_top = 168.0
+margin_right = 342.0
+margin_bottom = 204.0
+rect_min_size = Vector2( 0, 36 )
+custom_fonts/font = ExtResource( 3 )
+text = "BigLoki"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 208.0
+margin_right = 342.0
+margin_bottom = 238.0
+custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PasswordLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+margin_right = 108.0
+margin_bottom = 30.0
+custom_fonts/font = ExtResource( 1 )
+text = "Mot de passe"
+valign = 1
+
+[node name="Error" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 108.0
+margin_right = 116.0
+margin_bottom = 30.0
+custom_colors/font_color = Color( 0.738281, 0.204758, 0.204758, 1 )
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+
+[node name="PasswordLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer"]
+margin_top = 242.0
+margin_right = 342.0
+margin_bottom = 278.0
+rect_min_size = Vector2( 0, 36 )
+custom_fonts/font = ExtResource( 3 )
+text = "loki00"
+secret = true
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+margin_top = 282.0
+margin_right = 342.0
+margin_bottom = 312.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="Continue" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 319.0
+margin_right = 342.0
+margin_bottom = 355.0
+rect_min_size = Vector2( 0, 36 )
+focus_mode = 0
+size_flags_vertical = 6
+custom_colors/font_color = Color( 0.874786, 0.878754, 0.888672, 1 )
+custom_colors/font_color_hover = Color( 0.87451, 0.878431, 0.890196, 1 )
+custom_colors/font_color_pressed = Color( 0.87451, 0.878431, 0.890196, 1 )
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 4 )
+enabled_focus_mode = 0
+text = "Continuer"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 372.0
+margin_right = 342.0
+margin_bottom = 397.0
+size_flags_vertical = 6
+custom_constants/separation = -5
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 132.0
+margin_bottom = 25.0
+custom_fonts/font = ExtResource( 3 )
+text = "Déjà un compte ?"
+
+[node name="SignIn" type="ToolButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 127.0
+margin_right = 231.0
+margin_bottom = 25.0
+size_flags_vertical = 6
+custom_colors/font_color = Color( 0.396078, 0.560784, 0.811765, 1 )
+custom_colors/font_color_hover = Color( 0.505882, 0.658824, 0.894118, 1 )
+custom_colors/font_color_pressed = Color( 0.396078, 0.560784, 0.811765, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Se connecter"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Continue" to="." method="_on_Continue_pressed"]

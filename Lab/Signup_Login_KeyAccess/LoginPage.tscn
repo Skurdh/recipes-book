@@ -1,0 +1,246 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Lab/Signup_Login_KeyAccess/LoginPage.gd" type="Script" id=1]
+
+[node name="LoginPage" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -2.1189
+margin_top = 1.05948
+margin_right = -2.1189
+margin_bottom = 1.05945
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -171.0
+margin_top = -170.0
+margin_right = 171.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 342, 0 )
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Login" type="VBoxContainer" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 29.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_constants/separation = 7
+
+[node name="Label1" type="Label" parent="TabContainer/Login"]
+margin_right = 332.0
+margin_bottom = 22.0
+text = "Email"
+
+[node name="email" type="LineEdit" parent="TabContainer/Login"]
+margin_top = 29.0
+margin_right = 332.0
+margin_bottom = 51.0
+text = "vinegraphe@gmail.com"
+
+[node name="Label2" type="Label" parent="TabContainer/Login"]
+margin_top = 58.0
+margin_right = 332.0
+margin_bottom = 80.0
+text = "Password"
+
+[node name="password" type="LineEdit" parent="TabContainer/Login"]
+margin_top = 87.0
+margin_right = 332.0
+margin_bottom = 109.0
+text = "jormun"
+
+[node name="ForgetPassword" type="ToolButton" parent="TabContainer/Login"]
+margin_top = 116.0
+margin_right = 332.0
+margin_bottom = 138.0
+text = "Forgot password ?"
+align = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Login"]
+margin_top = 145.0
+margin_right = 332.0
+margin_bottom = 241.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 24
+custom_constants/margin_top = 24
+custom_constants/margin_left = 24
+custom_constants/margin_bottom = 36
+
+[node name="Login" type="Button" parent="TabContainer/Login/MarginContainer"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 308.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 0, 36 )
+text = "LOGIN"
+
+[node name="SignUp" type="VBoxContainer" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 29.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_constants/separation = 7
+
+[node name="Label3" type="Label" parent="TabContainer/SignUp"]
+margin_right = 332.0
+margin_bottom = 22.0
+text = "Username"
+
+[node name="username" type="LineEdit" parent="TabContainer/SignUp"]
+margin_top = 29.0
+margin_right = 332.0
+margin_bottom = 51.0
+
+[node name="Label1" type="Label" parent="TabContainer/SignUp"]
+margin_top = 58.0
+margin_right = 332.0
+margin_bottom = 80.0
+text = "Email"
+
+[node name="email" type="LineEdit" parent="TabContainer/SignUp"]
+margin_top = 87.0
+margin_right = 332.0
+margin_bottom = 109.0
+
+[node name="Label2" type="Label" parent="TabContainer/SignUp"]
+margin_top = 116.0
+margin_right = 332.0
+margin_bottom = 138.0
+text = "Password"
+
+[node name="password" type="LineEdit" parent="TabContainer/SignUp"]
+margin_top = 145.0
+margin_right = 332.0
+margin_bottom = 167.0
+
+[node name="Label4" type="Label" parent="TabContainer/SignUp"]
+visible = false
+margin_top = 156.0
+margin_right = 334.0
+margin_bottom = 170.0
+text = "Confirm Password"
+
+[node name="LineEdit4" type="LineEdit" parent="TabContainer/SignUp"]
+visible = false
+margin_top = 177.0
+margin_right = 334.0
+margin_bottom = 201.0
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/SignUp"]
+margin_top = 174.0
+margin_right = 332.0
+margin_bottom = 270.0
+size_flags_horizontal = 3
+custom_constants/margin_right = 24
+custom_constants/margin_top = 24
+custom_constants/margin_left = 24
+custom_constants/margin_bottom = 36
+
+[node name="SignUp" type="Button" parent="TabContainer/SignUp/MarginContainer"]
+margin_left = 24.0
+margin_top = 24.0
+margin_right = 308.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 0, 36 )
+text = "SIGN UP"
+
+[node name="PopupAccessKey" type="Popup" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+popup_exclusive = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="PopupAccessKey"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.647059 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="PopupAccessKey/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="PopupAccessKey/ColorRect/CenterContainer"]
+margin_left = 506.0
+margin_top = 295.0
+margin_right = 518.0
+margin_bottom = 303.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PopupAccessKey/ColorRect/CenterContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 307.0
+margin_bottom = 145.0
+rect_min_size = Vector2( 300, 0 )
+custom_constants/margin_top = 16
+custom_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupAccessKey/ColorRect/CenterContainer/PanelContainer/MarginContainer"]
+margin_top = 16.0
+margin_right = 300.0
+margin_bottom = 128.0
+custom_constants/separation = 16
+
+[node name="Label" type="Label" parent="PopupAccessKey/ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 300.0
+margin_bottom = 14.0
+text = "Entrez votre code d'accès :"
+align = 1
+valign = 1
+
+[node name="AccessKey" type="LineEdit" parent="PopupAccessKey/ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_left = 70.0
+margin_top = 30.0
+margin_right = 230.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 160, 0 )
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PopupAccessKey/ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 70.0
+margin_right = 300.0
+margin_bottom = 106.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Validate" type="Button" parent="PopupAccessKey/ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 44.0
+margin_right = 140.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 96, 36 )
+text = "Valider"
+
+[node name="Quitter" type="Button" parent="PopupAccessKey/ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 160.0
+margin_right = 256.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 96, 36 )
+text = "Quitter"
+
+[connection signal="pressed" from="TabContainer/Login/ForgetPassword" to="." method="_on_ForgetPassword_pressed"]
+[connection signal="pressed" from="TabContainer/Login/MarginContainer/Login" to="." method="_on_Login_pressed"]
+[connection signal="pressed" from="TabContainer/SignUp/MarginContainer/SignUp" to="." method="_on_SignUp_pressed"]
+[connection signal="pressed" from="PopupAccessKey/ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Validate" to="." method="_on_Validate_pressed"]
+[connection signal="pressed" from="PopupAccessKey/ColorRect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Quitter" to="." method="_on_Quitter_pressed"]

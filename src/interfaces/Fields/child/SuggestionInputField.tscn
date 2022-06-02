@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/interfaces/Fields/child/SuggestionInputField.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/PT-Regular_16_Button.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/interfaces/Fields/ComplexField.tscn" type="PackedScene" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="SuggestionInputFIeld" instance=ExtResource( 3 )]
+script = ExtResource( 1 )
+field_nodepath = NodePath("HBoxContainer2/LineEdit")
+
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer2" index="1"]
+margin_left = 4.0
+margin_right = 1920.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 0, 36 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+clear_button_enabled = true
+shortcut_keys_enabled = false
+caret_blink = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PopupPanel" type="PopupPanel" parent="HBoxContainer2/LineEdit" index="2"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 35.0
+margin_bottom = 546.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemList" type="ItemList" parent="HBoxContainer2/LineEdit/PopupPanel" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -8.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 7
+custom_fonts/font = ExtResource( 2 )
+custom_styles/bg_focus = SubResource( 1 )
+custom_styles/bg = SubResource( 1 )
+allow_reselect = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="focus_entered" from="HBoxContainer2/LineEdit" to="." method="_on_LineEdit_focus_entered"]
+[connection signal="focus_exited" from="HBoxContainer2/LineEdit" to="." method="_on_LineEdit_focus_exited"]
+[connection signal="gui_input" from="HBoxContainer2/LineEdit" to="." method="_on_LineEdit_gui_input"]
+[connection signal="text_changed" from="HBoxContainer2/LineEdit" to="." method="_on_LineEdit_text_changed"]
+[connection signal="item_selected" from="HBoxContainer2/LineEdit/PopupPanel/ItemList" to="." method="_on_ItemList_item_selected"]

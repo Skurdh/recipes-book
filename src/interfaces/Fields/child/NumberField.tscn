@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/interfaces/Fields/ComplexField.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/interfaces/Fields/child/NumberField.gd" type="Script" id=2]
+
+[node name="NumberField" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+is_required = false
+field_nodepath = NodePath("HBoxContainer2/SpinBox")
+
+[node name="SpinBox" type="SpinBox" parent="HBoxContainer2" index="1"]
+margin_left = 4.0
+margin_right = 1920.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 0, 36 )
+size_flags_horizontal = 3
+size_flags_vertical = 0
+step = 0.0
+allow_greater = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="focus_entered" from="HBoxContainer2/SpinBox" to="." method="_on_SpinBox_focus_entered"]

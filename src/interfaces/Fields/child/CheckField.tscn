@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/fonts/PT-Bold_16.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/interfaces/Fields/child/CheckField.gd" type="Script" id=2]
+
+[node name="CheckField" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+title = "Salut à tous les moulouds"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_top = 525.0
+margin_right = 8.0
+margin_bottom = 555.0
+custom_constants/shadow_offset_y = 0
+custom_fonts/font = ExtResource( 1 )
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer"]
+margin_left = 12.0
+margin_top = 528.0
+margin_right = 36.0
+margin_bottom = 552.0
+size_flags_vertical = 4

@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/interfaces/TypeSelector.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/PT-Italic_12.tres" type="DynamicFont" id=2]
+
+[sub_resource type="AtlasTexture" id=3]
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.0986938, 0.11792, 0.164063, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.0666667, 0.0823529, 0.117647, 1 )
+border_blend = true
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[node name="TypeSelector" type="VBoxContainer"]
+margin_right = 24.0
+margin_bottom = 43.0
+size_flags_vertical = 6
+custom_constants/separation = 5
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0.803922, 0.823529, 0.854902, 1 )
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+texture = SubResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="."]
+margin_top = 29.0
+margin_right = 24.0
+margin_bottom = 44.0
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 2 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="Label"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

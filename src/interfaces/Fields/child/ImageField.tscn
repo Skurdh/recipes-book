@@ -1,0 +1,184 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://src/interfaces/Fields/ComplexField.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/interfaces/Fields/child/ImageField.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/PT-BoldItalic_16.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/textures/icons/trash16x16.png" type="Texture" id=4]
+[ext_resource path="res://assets/themes/godot_editor_theme.tres" type="Theme" id=5]
+[ext_resource path="res://assets/textures/icons/zoom.png" type="Texture" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.14902, 0.172549, 0.231373, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.2, 0.231373, 0.309804, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 6.0
+bg_color = Color( 0.054902, 0.0627451, 0.0823529, 0.54902 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=3]
+content_margin_left = 6.0
+bg_color = Color( 0.054902, 0.0627451, 0.0823529, 0.647059 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_left = 6.0
+bg_color = Color( 0.054902, 0.0627451, 0.0823529, 0.486275 )
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="ImageField" instance=ExtResource( 1 )]
+rect_min_size = Vector2( 184, 218 )
+script = ExtResource( 2 )
+
+[node name="Panel" type="Panel" parent="HBoxContainer2" index="1"]
+margin_left = 4.0
+margin_right = 188.0
+margin_bottom = 184.0
+rect_min_size = Vector2( 184, 184 )
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="HBoxContainer2/Panel" index="0"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -90.0
+margin_top = -90.0
+margin_right = 90.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 180, 180 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AddImage" type="Button" parent="HBoxContainer2/Panel/Panel2" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 3 )
+enabled_focus_mode = 0
+text = "+ Ajouter une image"
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel3" type="Panel" parent="HBoxContainer2/Panel" index="1"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -90.0
+margin_top = -90.0
+margin_right = 90.0
+margin_bottom = 90.0
+rect_min_size = Vector2( 180, 180 )
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2/Panel/Panel3" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 2
+custom_constants/margin_top = 2
+custom_constants/margin_left = 2
+custom_constants/margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/Panel/Panel3/MarginContainer" index="0"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 178.0
+margin_bottom = 178.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+stretch_mode = 7
+
+[node name="Trash" type="Button" parent="HBoxContainer2/Panel/Panel3" index="1"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -31.0
+margin_top = -33.0
+margin_right = -3.0
+margin_bottom = -3.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 3 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 4 )
+enabled_focus_mode = 0
+icon = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Zoom" type="Button" parent="HBoxContainer2/Panel/Panel3" index="2"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -31.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = 33.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 3 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 4 )
+enabled_focus_mode = 0
+icon = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileDialog" type="FileDialog" parent="." index="2"]
+margin_right = 464.0
+margin_bottom = 239.0
+theme = ExtResource( 5 )
+window_title = "Sélectionner une image"
+resizable = true
+dialog_autowrap = true
+mode_overrides_title = false
+mode = 0
+access = 2
+filters = PoolStringArray( "*.jpg ; JPG", "*.jpeg ; JPEG", "*.png ; PNG" )
+current_dir = "/Utilisateurs/Solkae/Bureau/LivreRecettes/recipes-book"
+current_file = "Téléchargements"
+current_path = "/Utilisateurs/Solkae/Bureau/LivreRecettes/recipes-book/Téléchargements"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="HBoxContainer2/Panel/Panel2/AddImage" to="." method="_on_AddImage_pressed"]
+[connection signal="pressed" from="HBoxContainer2/Panel/Panel3/Trash" to="." method="_on_Trash_pressed"]
+[connection signal="pressed" from="HBoxContainer2/Panel/Panel3/Zoom" to="." method="_on_Zoom_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]

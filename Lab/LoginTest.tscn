@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Lab/LoginTest.gd" type="Script" id=1]
+
+[node name="LoginTest" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 492.0
+margin_bottom = 152.0
+custom_constants/separation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_right = 492.0
+margin_bottom = 22.0
+text = "Email"
+
+[node name="email" type="LineEdit" parent="HBoxContainer"]
+margin_top = 27.0
+margin_right = 492.0
+margin_bottom = 49.0
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+margin_top = 54.0
+margin_right = 492.0
+margin_bottom = 76.0
+text = "Password"
+
+[node name="password" type="LineEdit" parent="HBoxContainer"]
+margin_top = 81.0
+margin_right = 492.0
+margin_bottom = 103.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+margin_top = 108.0
+margin_right = 492.0
+margin_bottom = 152.0
+size_flags_vertical = 3
+custom_constants/separation = 250
+
+[node name="login" type="Button" parent="HBoxContainer/HBoxContainer"]
+margin_right = 121.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "Login"
+
+[node name="Button2" type="Button" parent="HBoxContainer/HBoxContainer"]
+margin_left = 371.0
+margin_right = 492.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+text = "Register"
+
+[connection signal="pressed" from="HBoxContainer/HBoxContainer/login" to="." method="_on_login_pressed"]
+[connection signal="pressed" from="HBoxContainer/HBoxContainer/Button2" to="." method="_on_register_pressed"]

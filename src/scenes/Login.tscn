@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/scenes/sub-scenes/Login/SignUpPanel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/scenes/sub-scenes/Login/SignInPanel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/scenes/Login.gd" type="Script" id=5]
+
+[node name="Login" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.2, 0.231373, 0.309804, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="SignInPanel" parent="ColorRect" instance=ExtResource( 2 )]
+anchor_left = 0.5
+anchor_top = 0.15
+anchor_right = 0.5
+anchor_bottom = 0.15
+margin_left = -190.0
+margin_right = 190.0
+
+[node name="SignUpPanel" parent="ColorRect" instance=ExtResource( 1 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.15
+anchor_right = 0.5
+anchor_bottom = 0.15
+margin_left = -190.0
+margin_right = 190.0
+margin_bottom = 428.0
+
+[connection signal="succeeded" from="ColorRect/SignInPanel" to="." method="_on_SignForm_succeeded"]
+[connection signal="succeeded" from="ColorRect/SignUpPanel" to="." method="_on_SignForm_succeeded"]

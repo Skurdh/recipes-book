@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/interfaces/Pages/CustomPopup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/fonts/PT-Bold_16.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/interfaces/Pages/DisplayRecipe.gd" type="Script" id=3]
+
+[node name="DisplayRecipe" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Label" parent="Panel/MarginContainer/VBoxContainer/TopBar" index="0"]
+margin_top = 6.0
+margin_bottom = 23.0
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer" index="1"]
+margin_top = 34.0
+margin_right = 1888.0
+margin_bottom = 1068.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+autowrap = true
