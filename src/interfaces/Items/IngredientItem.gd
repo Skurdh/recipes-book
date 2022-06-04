@@ -39,8 +39,8 @@ func populate(new_data: Dictionary) -> void:
 			$QuantityLabel.set_text(String(data.quantity))
 	
 	$IngredientLabel.set_text(data.ingredient if data["quantity"] != 0 else data.ingredient[0].to_upper() + data.ingredient.substr(1, -1))
-	if data.has("additional"):
-		$AdditionalLabel.set_text(data.additional)
+	if data.has("add"):
+		$AdditionalLabel.set_text(data.add)
 
 
 func get_elide(ingredient: String) -> String:

@@ -11,7 +11,9 @@ signal request_finished(task_infos)
 
 # Public variables
 enum {OK, VOID_DATA}
-const R_CATEGORY = []
+const R_CATEGORY = ["Plats", "Desserts", "Petit-dej", "Goûter"]
+const R_DIET = ["Poisson", "Viande", "Veggie"]
+const R_QUALITY = ["Sain", "Lourd"]
 
 const _recipe_document_body: Dictionary = {
 #	"creation_date": "",

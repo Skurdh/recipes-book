@@ -5,7 +5,6 @@
 [ext_resource path="res://assets/themes/Button_Custom_Pressed.tres" type="StyleBox" id=3]
 [ext_resource path="res://assets/themes/Button_Custom_Normal.tres" type="StyleBox" id=4]
 
-
 [node name="Button" type="Button"]
 margin_top = 279.0
 margin_right = 342.0
@@ -13,13 +12,13 @@ margin_bottom = 315.0
 rect_min_size = Vector2( 0, 36 )
 focus_mode = 0
 size_flags_vertical = 6
+custom_colors/font_color = Color( 0.874786, 0.878754, 0.888672, 1 )
+custom_colors/font_color_hover = Color( 0.87451, 0.878431, 0.890196, 1 )
+custom_colors/font_color_pressed = Color( 0.87451, 0.878431, 0.890196, 1 )
+custom_fonts/font = ExtResource( 1 )
 custom_styles/hover = ExtResource( 2 )
 custom_styles/pressed = ExtResource( 3 )
 custom_styles/focus = ExtResource( 4 )
 custom_styles/normal = ExtResource( 4 )
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 0.874786, 0.878754, 0.888672, 1 )
-custom_colors/font_color_hover = Color( 0.87451, 0.878431, 0.890196, 1 )
-custom_colors/font_color_pressed = Color( 0.87451, 0.878431, 0.890196, 1 )
 enabled_focus_mode = 0
 text = "Se connecter"

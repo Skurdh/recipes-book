@@ -23,7 +23,7 @@ var infos: Dictionary = {}
 func get_profil() -> void:
 	yield(get_tree(), "idle_frame")
 	var users_collection: FirestoreCollection = Firebase.Firestore.collection("users")
-	var get_task: FirestoreTask = users_collection.get(Firebase.Auth.auth.localid)
+	var get_task: FirestoreTask = users_collection.get("avhF2StZgParFz6yIPh59C585Ny1")
 	var user_doc: FirestoreDocument = yield(get_task, "get_document")
 	
 	infos = user_doc.doc_fields

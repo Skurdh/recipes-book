@@ -14,7 +14,7 @@ var popups_stack: Array = []
 
 # Onready variables
 onready var createrecipe_popup_pck: PackedScene = preload("res://src/interfaces/Pages/CreateRecipe.tscn")
-onready var displayrecipe_popup_pck: PackedScene = preload("res://src/interfaces/Pages/DisplayRecipe.tscn")
+onready var viewrecipe_popup_pck: PackedScene = preload("res://src/interfaces/Pages/ViewRecipe.tscn")
 onready var myrecipes_popup_pck: PackedScene = preload("res://src/interfaces/Pages/MyRecipes.tscn")
 
 onready var dark_bg: ColorRect = $ColorRect2
@@ -69,7 +69,7 @@ func _on_AddRecipeButton_pressed():
 
 
 func _on_recipe_opened(recipe_id: String) -> void:
-	open_popup(displayrecipe_popup_pck, RecipesManager.get_recipe_from_id(recipe_id))
+	open_popup(viewrecipe_popup_pck, RecipesManager.get_recipe_from_id(recipe_id))
 
 
 

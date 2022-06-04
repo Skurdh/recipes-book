@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://src/interfaces/Pages/CustomPopup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/fonts/PTSerif-Bold.ttf" type="DynamicFontData" id=2]
@@ -17,10 +17,12 @@
 [ext_resource path="res://assets/textures/icons/diet.png" type="Texture" id=15]
 [ext_resource path="res://assets/textures/icons/qualities.png" type="Texture" id=16]
 [ext_resource path="res://assets/fonts/PT-Bold_16.tres" type="DynamicFont" id=17]
-[ext_resource path="res://assets/fonts/PT-Italic_16.tres" type="DynamicFont" id=18]
-[ext_resource path="res://assets/fonts/PT-Regular_16.tres" type="DynamicFont" id=19]
+[ext_resource path="res://assets/textures/panier-repas.jpg" type="Texture" id=18]
+[ext_resource path="res://assets/fonts/PT-Italic_16.tres" type="DynamicFont" id=19]
 [ext_resource path="res://src/interfaces/CustomButton.tscn" type="PackedScene" id=20]
-[ext_resource path="res://assets/textures/Screenshot 2022-06-02 at 23-16-15 Brownie aux noix de cajou Lidl Recettes.png" type="Texture" id=21]
+[ext_resource path="res://assets/textures/icons/milk_free.png" type="Texture" id=21]
+[ext_resource path="res://assets/textures/icons/contains_sugar.png" type="Texture" id=22]
+[ext_resource path="res://assets/textures/icons/gluten_free.png" type="Texture" id=23]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -63,8 +65,16 @@ grow_end = -8.0
 size = 24
 font_data = ExtResource( 4 )
 
+[sub_resource type="StyleBoxFlat" id=10]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+bg_color = Color( 0.14902, 0.172549, 0.231373, 1 )
+
 [node name="ViewRecipe" instance=ExtResource( 1 )]
 visible = true
+rect_min_size = Vector2( 896, 0 )
 script = ExtResource( 14 )
 
 [node name="Label" parent="Panel/MarginContainer/VBoxContainer/TopBar" index="0"]
@@ -99,25 +109,25 @@ size_flags_vertical = 3
 custom_constants/separation = 16
 
 [node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content" index="0"]
-visible = false
 margin_right = 1840.0
 margin_bottom = 320.0
 rect_min_size = Vector2( 0, 320 )
 size_flags_horizontal = 3
-texture = ExtResource( 21 )
+texture = ExtResource( 18 )
 expand = true
 stretch_mode = 7
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content" index="1"]
+margin_top = 336.0
 margin_right = 1840.0
-margin_bottom = 496.0
+margin_bottom = 614.0
 custom_constants/margin_right = 24
 custom_constants/margin_left = 24
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer" index="0"]
 margin_left = 24.0
 margin_right = 1816.0
-margin_bottom = 496.0
+margin_bottom = 278.0
 custom_constants/separation = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer" index="0"]
@@ -151,25 +161,19 @@ margin_left = 33.0
 margin_right = 90.0
 margin_bottom = 40.0
 size_flags_vertical = 1
-custom_colors/font_color = Color( 0.513726, 0.639216, 0.823529, 1 )
+custom_colors/font_color = Color( 0.415686, 0.615686, 0.917647, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "Skurd"
 valign = 1
 
-[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/HBoxContainer" index="2"]
-margin_left = 310.0
-margin_right = 314.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 4, 0 )
-
-[node name="TextureButton" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/HBoxContainer" index="3"]
-margin_left = 318.0
+[node name="TextureButton" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/HBoxContainer" index="2"]
+margin_left = 1760.0
 margin_top = 4.0
-margin_right = 350.0
+margin_right = 1792.0
 margin_bottom = 36.0
 hint_tooltip = "Ajouter en favori"
 focus_mode = 0
-size_flags_horizontal = 2
+size_flags_horizontal = 10
 size_flags_vertical = 4
 toggle_mode = true
 texture_normal = ExtResource( 6 )
@@ -182,7 +186,7 @@ stretch_mode = 5
 [node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer" index="1"]
 margin_top = 48.0
 margin_right = 1792.0
-margin_bottom = 496.0
+margin_bottom = 278.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 8
@@ -191,20 +195,23 @@ custom_constants/margin_left = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer" index="0"]
 margin_left = 8.0
 margin_right = 1784.0
-margin_bottom = 448.0
+margin_bottom = 230.0
 custom_constants/separation = 36
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" index="0"]
 margin_right = 1776.0
 margin_bottom = 30.0
+mouse_filter = 2
 custom_constants/separation = 8
 
 [node name="Category" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="0"]
 margin_right = 110.0
 margin_bottom = 30.0
+hint_tooltip = "Catégorie"
+mouse_filter = 0
 
 [node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/Category" index="0"]
-modulate = Color( 0.8, 0.807843, 0.827451, 1 )
+modulate = Color( 0.391785, 0.541321, 0.765625, 1 )
 margin_right = 28.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 28, 28 )
@@ -230,9 +237,11 @@ custom_styles/separator = SubResource( 4 )
 margin_left = 130.0
 margin_right = 218.0
 margin_bottom = 30.0
+hint_tooltip = "Saison(s)"
+mouse_filter = 0
 
 [node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/Season" index="0"]
-modulate = Color( 0.8, 0.807843, 0.827451, 1 )
+modulate = Color( 0.391785, 0.541321, 0.765625, 1 )
 margin_right = 28.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 28, 28 )
@@ -258,9 +267,11 @@ custom_styles/separator = SubResource( 4 )
 margin_left = 238.0
 margin_right = 332.0
 margin_bottom = 30.0
+hint_tooltip = "Régime"
+mouse_filter = 0
 
 [node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/Diet" index="0"]
-modulate = Color( 0.8, 0.807843, 0.827451, 1 )
+modulate = Color( 0.391785, 0.541321, 0.765625, 1 )
 margin_right = 28.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 28, 28 )
@@ -283,9 +294,11 @@ margin_bottom = 30.0
 custom_styles/separator = SubResource( 4 )
 
 [node name="Portions" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="6"]
+visible = false
 margin_left = 352.0
 margin_right = 452.0
 margin_bottom = 30.0
+mouse_filter = 0
 
 [node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/Portions" index="0"]
 modulate = Color( 0.8, 0.807843, 0.827451, 1 )
@@ -305,18 +318,21 @@ text = "99 parts"
 valign = 1
 
 [node name="VSeparator4" type="VSeparator" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="7"]
-margin_left = 460.0
-margin_right = 464.0
+visible = false
+margin_left = 352.0
+margin_right = 356.0
 margin_bottom = 30.0
 custom_styles/separator = SubResource( 4 )
 
 [node name="PrepTime" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="8"]
-margin_left = 472.0
-margin_right = 579.0
+margin_left = 352.0
+margin_right = 459.0
 margin_bottom = 30.0
+hint_tooltip = "Temps de préparation"
+mouse_filter = 0
 
 [node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrepTime" index="0"]
-modulate = Color( 0.8, 0.807843, 0.827451, 1 )
+modulate = Color( 0.391785, 0.541321, 0.765625, 1 )
 margin_right = 28.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 28, 28 )
@@ -333,18 +349,20 @@ text = "0 h 0 min"
 valign = 1
 
 [node name="VSeparator5" type="VSeparator" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="9"]
-margin_left = 587.0
-margin_right = 591.0
+margin_left = 467.0
+margin_right = 471.0
 margin_bottom = 30.0
 custom_styles/separator = SubResource( 4 )
 
-[node name="CookTime2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="10"]
-margin_left = 599.0
-margin_right = 706.0
+[node name="CookTime" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="10"]
+margin_left = 479.0
+margin_right = 586.0
 margin_bottom = 30.0
+hint_tooltip = "Temps de cuisson"
+mouse_filter = 0
 
-[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/CookTime2" index="0"]
-modulate = Color( 0.8, 0.807843, 0.827451, 1 )
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/CookTime" index="0"]
+modulate = Color( 0.391785, 0.541321, 0.765625, 1 )
 margin_right = 28.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 28, 28 )
@@ -352,7 +370,7 @@ texture = ExtResource( 12 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/CookTime2" index="1"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/CookTime" index="1"]
 margin_left = 32.0
 margin_right = 107.0
 margin_bottom = 30.0
@@ -361,18 +379,20 @@ text = "0 h 0 min"
 valign = 1
 
 [node name="VSeparator6" type="VSeparator" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="11"]
-margin_left = 714.0
-margin_right = 718.0
+margin_left = 594.0
+margin_right = 598.0
 margin_bottom = 30.0
 custom_styles/separator = SubResource( 4 )
 
-[node name="CookTime3" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="12"]
-margin_left = 726.0
-margin_right = 820.0
+[node name="Quality" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="12"]
+margin_left = 606.0
+margin_right = 700.0
 margin_bottom = 30.0
+hint_tooltip = "Qualité"
+mouse_filter = 0
 
-[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/CookTime3" index="0"]
-modulate = Color( 0.8, 0.807843, 0.827451, 1 )
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/Quality" index="0"]
+modulate = Color( 0.391785, 0.541321, 0.765625, 1 )
 margin_right = 28.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 28, 28 )
@@ -380,7 +400,7 @@ texture = SubResource( 9 )
 expand = true
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/CookTime3" index="1"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/Quality" index="1"]
 margin_left = 32.0
 margin_right = 94.0
 margin_bottom = 30.0
@@ -388,103 +408,159 @@ custom_fonts/font = ExtResource( 5 )
 text = "Qualité"
 valign = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="13"]
+margin_left = 1756.0
+margin_right = 1776.0
+margin_bottom = 30.0
+size_flags_horizontal = 10
+custom_constants/separation = 14
+
+[node name="GlutenFree" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer" index="0"]
+visible = false
+modulate = Color( 0.392157, 0.541176, 0.764706, 1 )
+margin_right = 28.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 28, 28 )
+hint_tooltip = "Sans gluten"
+size_flags_horizontal = 10
+texture = ExtResource( 23 )
+expand = true
+stretch_mode = 6
+
+[node name="MilkFree" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer" index="1"]
+visible = false
+modulate = Color( 0.392157, 0.541176, 0.764706, 1 )
+margin_right = 28.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 28, 28 )
+hint_tooltip = "Sans lait"
+size_flags_horizontal = 10
+texture = ExtResource( 21 )
+expand = true
+stretch_mode = 6
+
+[node name="WithSugar" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer" index="2"]
+visible = false
+modulate = Color( 0.392157, 0.541176, 0.764706, 1 )
+margin_right = 28.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 28, 28 )
+hint_tooltip = "Contient du sucre"
+size_flags_horizontal = 10
+texture = ExtResource( 22 )
+expand = true
+stretch_mode = 6
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer" index="3"]
+margin_right = 20.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 20, 0 )
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" index="1"]
 margin_top = 66.0
 margin_right = 1776.0
-margin_bottom = 448.0
+margin_bottom = 230.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 24
+custom_constants/separation = 32
 
 [node name="PanelContainer" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
-margin_right = 433.0
-margin_bottom = 198.0
+margin_right = 288.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 288, 0 )
 size_flags_vertical = 0
-size_flags_stretch_ratio = 0.2
 custom_styles/panel = SubResource( 5 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer" index="0"]
-margin_right = 433.0
-margin_bottom = 198.0
+margin_right = 288.0
+margin_bottom = 164.0
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" index="0"]
-margin_right = 433.0
-margin_bottom = 30.0
+[node name="Control2" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" index="0"]
+margin_right = 288.0
+margin_bottom = 6.0
+rect_min_size = Vector2( 0, 6 )
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" index="1"]
+margin_top = 10.0
+margin_right = 288.0
+margin_bottom = 40.0
 custom_fonts/font = ExtResource( 17 )
 text = "Nombre de parts"
 align = 1
 
-[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" index="1"]
-margin_left = 168.0
-margin_top = 34.0
-margin_right = 264.0
-margin_bottom = 66.0
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" index="2"]
+margin_top = 44.0
+margin_right = 288.0
+margin_bottom = 76.0
+custom_constants/separation = 8
+alignment = 1
+
+[node name="Minus" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" index="0"]
+margin_left = 56.0
+margin_right = 88.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+focus_mode = 0
+custom_fonts/font = ExtResource( 17 )
+disabled = true
+enabled_focus_mode = 0
+text = "-"
+
+[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" index="1"]
+margin_left = 96.0
+margin_right = 192.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 96, 32 )
+focus_mode = 0
 size_flags_horizontal = 4
 text = "5"
 align = 1
 editable = false
 
-[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" index="2"]
-margin_top = 70.0
-margin_right = 433.0
-margin_bottom = 84.0
-custom_constants/separation = 14
+[node name="Add" type="Button" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" index="2"]
+margin_left = 200.0
+margin_right = 232.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+focus_mode = 0
+custom_fonts/font = ExtResource( 17 )
+disabled = true
+enabled_focus_mode = 0
+text = "+"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" index="3"]
+margin_top = 80.0
+margin_right = 288.0
+margin_bottom = 80.0
+
+[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" index="4"]
+margin_top = 84.0
+margin_right = 288.0
+margin_bottom = 88.0
 custom_styles/separator = SubResource( 6 )
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" index="3"]
-margin_top = 88.0
-margin_right = 433.0
-margin_bottom = 198.0
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer" index="5"]
+margin_top = 92.0
+margin_right = 288.0
+margin_bottom = 164.0
 custom_constants/margin_right = 8
 custom_constants/margin_left = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer" index="0"]
 margin_left = 8.0
-margin_right = 425.0
-margin_bottom = 110.0
+margin_right = 280.0
+margin_bottom = 72.0
 
-[node name="Ingredient" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" index="0"]
-margin_right = 417.0
-margin_bottom = 30.0
-size_flags_horizontal = 3
+[node name="IngredientsRoot" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" index="0"]
+margin_right = 272.0
 
-[node name="Quantity" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Ingredient" index="0"]
-margin_right = 96.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 96, 0 )
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 17 )
-text = "200 g"
-
-[node name="Name" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Ingredient" index="1"]
-margin_left = 100.0
-margin_right = 252.0
-margin_bottom = 30.0
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 19 )
-text = "Nom de l'ingrédient"
-
-[node name="Additionnal" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Ingredient" index="2"]
-margin_left = 256.0
-margin_right = 417.0
-margin_bottom = 30.0
-size_flags_vertical = 1
-custom_fonts/font = ExtResource( 18 )
-text = "Infos complémentaires"
-
-[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" index="1"]
-margin_top = 34.0
-margin_right = 417.0
-margin_bottom = 38.0
-
-[node name="MarginContainer2" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" index="2"]
-margin_top = 42.0
-margin_right = 417.0
-margin_bottom = 110.0
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" index="1"]
+margin_top = 4.0
+margin_right = 272.0
+margin_bottom = 72.0
 custom_constants/margin_right = 32
 custom_constants/margin_top = 16
 custom_constants/margin_left = 32
@@ -493,62 +569,60 @@ custom_constants/margin_bottom = 16
 [node name="Button2" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer2" index="0" instance=ExtResource( 20 )]
 margin_left = 32.0
 margin_top = 16.0
-margin_right = 385.0
+margin_right = 240.0
 margin_bottom = 52.0
+disabled = true
 text = "Ajouter au panier"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" index="1"]
-margin_left = 457.0
+margin_left = 320.0
 margin_right = 1776.0
-margin_bottom = 382.0
+margin_bottom = 164.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 22
 
 [node name="Instructions" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" index="0"]
-margin_right = 1319.0
-margin_bottom = 189.0
+margin_right = 1456.0
+margin_bottom = 44.0
 
 [node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Instructions" index="0"]
-margin_right = 1319.0
+margin_right = 1456.0
 margin_bottom = 40.0
 custom_fonts/font = SubResource( 7 )
 text = "Préparation"
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Instructions" index="1"]
+[node name="InstructionsRoot" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Instructions" index="1"]
 margin_top = 44.0
-margin_right = 1319.0
-margin_bottom = 189.0
-custom_fonts/font = ExtResource( 19 )
-text = "    Préchauffer le four à 160°C.
-    Faire fondre le chocolat et le beurre au bain marie.
-    Mélanger les œufs entiers et le sucre dans un bol puis verser le chocolat et le beurre fondus.
-    Ajouter la farine et mélanger de nouveau jusqu’à obtenir une pâte homogène.
-    Concasser grossièrement les noix de cajou puis les ajouter au mélange.
-    Verser la pâte dans un moule à gâteau préalablement beurré.
-    Décorer le brownie avec quelques noix de cajou puis enfourner le tout pendant 20 à 25 minutes. Parsemer de fleurs de sel, c’est prêt !"
-autowrap = true
+margin_right = 1456.0
+margin_bottom = 44.0
+custom_constants/separation = 8
 
 [node name="Note" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" index="1"]
-margin_top = 193.0
-margin_right = 1319.0
-margin_bottom = 382.0
+visible = false
+margin_top = 66.0
+margin_right = 480.0
+margin_bottom = 152.0
 
 [node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Note" index="0"]
-margin_right = 1319.0
+margin_right = 480.0
 margin_bottom = 40.0
 custom_fonts/font = SubResource( 7 )
-text = "Note"
+text = "Note de l'auteur"
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Note" index="1"]
+[node name="PanelContainer" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Note" index="1"]
 margin_top = 44.0
-margin_right = 1319.0
-margin_bottom = 189.0
+margin_right = 480.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 10 )
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Note/PanelContainer" index="0"]
+margin_left = 8.0
+margin_top = 6.0
+margin_right = 472.0
+margin_bottom = 36.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_fonts/font = ExtResource( 19 )
-text = "    Préchauffer le four à 160°C.
-    Faire fondre le chocolat et le beurre au bain marie.
-    Mélanger les œufs entiers et le sucre dans un bol puis verser le chocolat et le beurre fondus.
-    Ajouter la farine et mélanger de nouveau jusqu’à obtenir une pâte homogène.
-    Concasser grossièrement les noix de cajou puis les ajouter au mélange.
-    Verser la pâte dans un moule à gâteau préalablement beurré.
-    Décorer le brownie avec quelques noix de cajou puis enfourner le tout pendant 20 à 25 minutes. Parsemer de fleurs de sel, c’est prêt !"
-autowrap = true

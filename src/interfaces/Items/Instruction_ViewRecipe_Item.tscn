@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/fonts/PTSerif-BoldItalic.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/PT-Regular_16.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/interfaces/Items/Instruction_ViewRecipe_Item.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.137787, 0.158408, 0.209961, 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.14902, 0.172549, 0.231373, 1 )
+
+[sub_resource type="DynamicFont" id=14]
+extra_spacing_top = -4
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[node name="PanelContainer" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -1013.0
+mouse_filter = 2
+custom_styles/panel = SubResource( 10 )
+script = ExtResource( 3 )
+
+[node name="Button" type="Button" parent="."]
+margin_right = 1920.0
+margin_bottom = 67.0
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+toggle_mode = true
+enabled_focus_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 1920.0
+margin_bottom = 67.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 8
+custom_constants/margin_top = 6
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 8.0
+margin_top = 6.0
+margin_right = 1912.0
+margin_bottom = 55.0
+mouse_filter = 2
+custom_constants/separation = 8
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+margin_right = 22.0
+margin_bottom = 49.0
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 14 )
+text = "1."
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer"]
+margin_left = 30.0
+margin_right = 1904.0
+margin_bottom = 49.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/default_color = Color( 0.32549, 0.337255, 0.376471, 1 )
+custom_fonts/normal_font = ExtResource( 2 )
+custom_styles/normal = SubResource( 13 )
+bbcode_enabled = true
+bbcode_text = "sqdqsdqs"
+meta_underlined = false
+text = "sqdqsdqs"
+fit_content_height = true
+scroll_active = false
+
+[connection signal="toggled" from="Button" to="." method="_on_Button_toggled"]
