@@ -15,6 +15,7 @@ extends CustomPopup
 onready var ingredient_item_pck: PackedScene = preload("res://src/interfaces/Items/Ingredient_ViewRecipe_Item.tscn")
 onready var instruction_item_pck: PackedScene = preload("res://src/interfaces/Items/Instruction_ViewRecipe_Item.tscn")
 
+
 # Setter Getter Functions
 
 # Callback functions
@@ -29,32 +30,32 @@ func init(data: Dictionary) -> void:
 		# Author
 		get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer/Author").set_text(data.author)
 		# Category
-		get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/Category/Label").set_text(RecipesManager.R_CATEGORY[data.category-1])
-		# Season
-		print("TODO SEASON")
-		# Diet
-		get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/Diet/Label").set_text(RecipesManager.R_DIET[data.diet-1])
-		# Portions
-#		get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/Portions/Label").set_text(String(data.portions) + " parts" if data.portions > 1 else " part")
+		get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/Category").populate({"name": RecipesManager.R_CATEGORY[data.category-1]})
 		
+		# Season
+		get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/SeasonInfoItem").populate(data.season)
+		
+		# Diet
+		get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/Diet").populate({"name": RecipesManager.R_DIET[data.diet-1], "idx": data.diet-1})
+
 		#PrepartionTime
-		var prep_time_formated: String = convert_time(data.prep_time)
-		if prep_time_formated != "":	
-			get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrepTime/Label").set_text(prep_time_formated)
+		var prep_time_formated: String = RecipesManager.tools_string_time_format(data.prep_time)
+		if prep_time_formated != "":
+			get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrepTime").populate({"name": prep_time_formated})
 		else:
 			get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/PrepTime").set_visible(false)
 			get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VSeparator5").set_visible(false)
 		
 		#CookTime
-		var cook_time_formated: String = convert_time(data.cook_time)
+		var cook_time_formated: String = RecipesManager.tools_string_time_format(data.cook_time)
 		if cook_time_formated != "":	
-			get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/CookTime/Label").set_text(cook_time_formated)
+			get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/CookTime").populate({"name": cook_time_formated})
 		else:
 			get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/CookTime").set_visible(false)
 			get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VSeparator6").set_visible(false)
 	
 		#Quality
-		get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/Quality/Label").set_text(RecipesManager.R_QUALITY[data.quality-1])
+		get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/Quality").populate({"name": RecipesManager.R_QUALITY[data.quality-1], "idx": data.quality-1})
 	
 		# Portions
 		get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/LineEdit").set_text(String(data.portions))
@@ -70,13 +71,13 @@ func init(data: Dictionary) -> void:
 		# Instructions
 		var instructions_root: VBoxContainer = get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Instructions/InstructionsRoot")
 		var instructions_string: String = ""
-		for i in data.instructions.size():
+		for idx in data.instructions.size():
 			var new_item: PanelContainer = instruction_item_pck.instance()
 			instructions_root.add_child(new_item)
-			new_item.populate(i, data.instructions[i])
+			new_item.populate(idx, data.instructions[idx])
 		
 		# Notes
-		if data.has("notes"):
+		if not data.notes[0].empty():
 			get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Note").set_visible(true)
 			get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Note/PanelContainer/Label").set_text(data.notes[0])
 		
@@ -87,19 +88,16 @@ func init(data: Dictionary) -> void:
 		if data.has("with_sugar") and data.with_sugar:
 			get_node("Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/HBoxContainer/WithSugar").set_visible(true)
 	
+		# Modify Button
+		if data.author_id == Profil.get_id():
+			$Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/HBoxContainer/Modify.set_visible(true)
+			$Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/HBoxContainer/Modify.connect("pressed", self, "_on_Modify_pressed", [data.ID])
 	else:
 		push_error("DISPLAY RECIPE VOID") #TODO
 
 
-func convert_time(time_data: Array) -> String:
-	var time_formated: String = ""
-	
-	if time_data[0] != 0:
-		time_formated += String(time_data[0]) + " h " + String(time_data[1]).pad_zeros(2) + " min"
-	if time_data[1] != 0:
-		time_formated += String(time_data[1]).pad_zeros(2) + " min"
-	
-	return time_formated
 
 
 # Signal functions
+func _on_Modify_pressed(recipe_id: String) -> void:
+	print(recipe_id)

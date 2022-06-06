@@ -8,12 +8,14 @@ class_name Form
 # Signals
 signal data_collected(data)
 signal form_completed()
+signal form_aborted()
 
 
 # Export variable
 export(int, "NONE", "ADD", "MODIFY") var mode: int = 0
 export(Array, NodePath) var fields: Array = []
 export(NodePath) var validation_button: NodePath
+export(NodePath) var cancel_button: NodePath
 
 # Public variables
 enum Field { VOID, ADDED }
@@ -35,9 +37,17 @@ func _ready() -> void:
 # warning-ignore:return_value_discarded
 		field.connect("content_modified", self, "_on_Field_content_modified", [field_path])
 		fields_state.append([field.is_required, Field.VOID])
+	if not cancel_button.is_empty():
+		get_node(cancel_button).connect("pressed", self, "_on_CancelButton_pressed")
 
 
 # Self functions
+func inject_data(data: Dictionary) -> void:
+	for field_nodepath in fields:
+		var field_node: Node = get_node(field_nodepath)
+		field_node.inject_data(data[field_node.field_id])
+
+
 func collect(ignore_error: bool = false) -> Array:
 	var collect: Array = []
 	var has_error: bool = false
@@ -72,7 +82,7 @@ func verify_fields_state() -> void:
 	elif mode == 2: #MODIFY MODE
 		var field_is_added: bool = false
 		for state in fields_state:
-			if state[0] and state[1] == Field.ADDED:
+			if state[1] == Field.ADDED:
 				field_is_added = true
 				break
 		if not field_is_added:
@@ -93,6 +103,11 @@ func _on_ValidationButton_pressed() -> void:
 		if mode != 0:
 			get_node(validation_button).set_disabled(true)
 		emit_signal("data_collected", data)
+
+
+func _on_CancelButton_pressed() -> void:
+	clear()
+	emit_signal("form_aborted")
 
 
 func _on_Field_content_modified(state: String, field_path: NodePath) -> void:

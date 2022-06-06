@@ -17,7 +17,6 @@
 [ext_resource path="res://src/interfaces/Pages/CreateRecipe.gd" type="Script" id=16]
 
 [node name="CreateRecipe" instance=ExtResource( 12 )]
-visible = true
 rect_min_size = Vector2( 900, 650 )
 script = ExtResource( 16 )
 
@@ -81,7 +80,7 @@ anchor_bottom = 0.0
 margin_left = 630.0
 margin_right = 1257.0
 margin_bottom = 72.0
-field_id = "seasons"
+field_id = "season"
 title = "Saisons"
 
 [node name="DietField" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer" index="2" instance=ExtResource( 7 )]
@@ -107,6 +106,7 @@ anchor_bottom = 0.0
 margin_right = 469.0
 margin_bottom = 70.0
 field_id = "portions"
+is_required = true
 title = "Portions"
 
 [node name="PrepTimeField" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2" index="1" instance=ExtResource( 2 )]
@@ -301,6 +301,8 @@ one_shot = true
 mode = 1
 fields = [ NodePath("../Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/TitleField"), NodePath("../Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/CategoriesField"), NodePath("../Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/SeasonsField"), NodePath("../Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer/DietField"), NodePath("../Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/NumberField"), NodePath("../Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/PrepTimeField"), NodePath("../Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/CookTimeField"), NodePath("../Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/HBoxContainer2/QualityField"), NodePath("../Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2/IngredientField"), NodePath("../Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/InstructionsField"), NodePath("../Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2/VBoxContainer/NoteField"), NodePath("../Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3/CheckField"), NodePath("../Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3/CheckField2"), NodePath("../Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3/CheckField3") ]
 validation_button = NodePath("../Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3/Publish")
+cancel_button = NodePath("../Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3/Cancel")
 
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3/Save" to="." method="_on_Save_pressed"]
 [connection signal="data_collected" from="Form" to="." method="_on_Form_data_collected"]
+[connection signal="form_aborted" from="Form" to="." method="_on_Form_form_aborted"]

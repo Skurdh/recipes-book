@@ -7,7 +7,6 @@
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
-title = "Salut à tous les moulouds"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 1920.0
@@ -31,3 +30,5 @@ margin_top = 528.0
 margin_right = 36.0
 margin_bottom = 552.0
 size_flags_vertical = 4
+
+[connection signal="pressed" from="HBoxContainer/CheckBox" to="." method="_on_CheckBox_pressed"]

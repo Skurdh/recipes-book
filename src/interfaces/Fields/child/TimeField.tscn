@@ -26,6 +26,7 @@ text = "00 : 00"
 align = 0
 
 [node name="PopupPanel" type="PopupPanel" parent="HBoxContainer2/SelectButton" index="0"]
+visible = true
 show_behind_parent = true
 margin_top = 36.0
 margin_right = 1920.0

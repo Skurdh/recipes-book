@@ -58,7 +58,7 @@ func generate_random_recipe() -> Array:
 	recipe.append({"id": "title", "content": get_rand_sentence()})
 	recipe.append({"id": "photo_id", "content": String(rand_range(0.0, 10000.0))})
 	recipe.append({"id": "category", "content": randi() % 5})
-	recipe.append({"id": "season", "content": randi() % 16})
+	recipe.append({"id": "season", "content": "001100101000"})
 	recipe.append({"id": "diet", "content": randi() % 3})
 	recipe.append({"id": "quality", "content": randi() % 2})
 	recipe.append({"id": "portions", "content": (randi() % 8) + 1})

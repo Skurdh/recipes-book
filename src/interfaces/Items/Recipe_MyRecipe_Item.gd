@@ -17,8 +17,10 @@ extends HBoxContainer
 # Callback functions
 
 # Self functions
-func populate(recipe_data: Dictionary) -> void:
+func populate(id: int, recipe_data: Dictionary) -> void:
+	$View/HBoxContainer/ID.set_text(String(id))
 	$View/HBoxContainer/Title.set_text(recipe_data.title)
+	$View/HBoxContainer/Date.set_text(recipe_data.create_time)
 
 
 func get_view_button() -> Button:

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gluten_free.png-125fd0dc1a0c13b800eb51295576b5c9.stex"
+path="res://.import/cube.png-7d8b53210ef1681363901f774bde6c2e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/icons/gluten_free.png"
-dest_files=[ "res://.import/gluten_free.png-125fd0dc1a0c13b800eb51295576b5c9.stex" ]
+source_file="res://assets/textures/icons/cube.png"
+dest_files=[ "res://.import/cube.png-7d8b53210ef1681363901f774bde6c2e.stex" ]
 
 [params]
 

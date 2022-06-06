@@ -25,6 +25,10 @@ func _ready() -> void:
 
 
 # Self functions
+func is_empty() -> bool:
+	return not check_box.is_pressed()
+
+
 func set_data(value: bool) -> void:
 	check_box.set_pressed(value)
 	
@@ -38,3 +42,10 @@ func clear_field() -> void:
 
 
 # Signal functions
+func _on_CheckBox_pressed() -> void:
+	if has_content:
+		if field_content == check_box.is_pressed():
+			emit_signal("content_modified", "deleted")
+			return
+
+	emit_signal("content_modified", "added")

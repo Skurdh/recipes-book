@@ -8,7 +8,7 @@ extends HBoxContainer
 signal recipe_pressed(recipe_id)
 
 # Export variable
-export(int) var max_preview: int = 6
+export(int) var max_preview: int = 7
 
 # Public variables
 var page_index: int = 0
@@ -21,7 +21,7 @@ onready var left_label: Label = $Pages/Left/MarginContainer/VBoxContainer/LeftLa
 onready var previous_button: Button = $PreviousButton
 onready var next_button: Button = $NextButton
 
-onready var r_preview_pck: PackedScene = preload("res://src/interfaces/Items/RecipePreview.tscn")
+onready var recipe_preview_pck: PackedScene = preload("res://src/interfaces/Items/PreviewRecipeItem.tscn")
 
 # Setter Getter Functions
 
@@ -32,9 +32,9 @@ onready var r_preview_pck: PackedScene = preload("res://src/interfaces/Items/Rec
 func init() -> void:
 	update_pages()
 	_disabled_button(0)
-	if RecipesManager.get_size() != 0:
+	RecipesManager.connect("request_finished", self, "_on_RecipesManager_request_finished")
+	if RecipesManager.get_size() > max_preview * 2:
 		_enabled_button(1)
-		RecipesManager.connect("request_finished", self, "_on_RecipesManager_request_finished")
 
 
 func update_pages() -> void:
@@ -44,17 +44,19 @@ func update_pages() -> void:
 	for i in range(max_preview * 2):
 		if i >= recipes.size(): break
 		
-		var preview: Button = r_preview_pck.instance()
+		var preview: HBoxContainer = recipe_preview_pck.instance()
 		var h_separator: HSeparator = HSeparator.new()
-		preview.populate(recipes[i])
-		preview.connect("pressed", self, "_on_Preview_pressed", [recipes[i].ID])
-		
 		if i < max_preview:
 			left_container.add_child(preview)
 			left_container.add_child(h_separator)
 		else:
 			right_container.add_child(preview)
 			right_container.add_child(h_separator)
+
+		preview.populate(recipes[i])
+		preview.get_button().connect("pressed", self, "_on_Preview_pressed", [recipes[i].ID])
+		
+		
 
 	left_label.set_text("- " + String(page_index + page_index + 1) + " -")
 	right_label.set_text("- " + String(page_index + page_index + 2) + " -")
@@ -71,7 +73,7 @@ func next_page() -> void:
 			_disabled_button(1)
 		if previous_button.is_disabled():
 			_enabled_button(0)
-			
+
 
 func previous_page() -> void:
 	if page_index - 1 >= 0:
@@ -118,5 +120,5 @@ func _on_Preview_pressed(recipe_id: String) -> void:
 
 
 func _on_RecipesManager_request_finished(infos: Dictionary) -> void:
-	if infos.request_return == "add" and infos.content == 0:
+	if (infos.request_return == "add" or infos.request_return == "update") and infos.content == 0:
 		update_pages()

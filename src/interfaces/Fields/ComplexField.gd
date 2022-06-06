@@ -9,7 +9,6 @@ class_name ComplexField
 # Signals
 
 
-
 # Export variable
 export(String) var title: String = "" setget set_title
 export(bool) var title_visible: bool = true setget set_title_visible
@@ -22,10 +21,6 @@ export(NodePath) var field_nodepath: NodePath
 const errors_list: Array = [
 	"Requis !"
 ]
-
-var has_content: bool = false
-var field_content #:Variant
-
 
 # Onready variables
 onready var title_container: HBoxContainer = $HBoxContainer
@@ -73,14 +68,11 @@ func clear_error() -> void:
 	error_label.set_text("")
 
 
-func is_empty() -> bool:
-	print("Must be overrided !")
-	return true
+
 
 
 func check(ignore_error: bool) -> bool:
 	clear_error()
-	
 	if is_empty() and is_required:
 		if not ignore_error:
 			push_field_error()
@@ -88,10 +80,7 @@ func check(ignore_error: bool) -> bool:
 	return true
 
 
-func inject_data(content_data) -> void:
-	has_content = true
-	field_content = content_data
-	set_data(content_data)
+
 	
 	
 func collect(ignore_error: bool = false) -> Dictionary:

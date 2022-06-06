@@ -35,6 +35,8 @@ func _ready() -> void:
 		for j in range(4):
 			line_edit. set_focus_neighbour(j, line_edits[(i+1)%2].get_path())
 	
+	line_edits[1].connect("text_entered", self, "_on_MinuteLineEdit_text_entered")
+	
 	
 	
 
@@ -102,8 +104,14 @@ func _on_Validate_pressed() -> void:
 	select_button.set_pressed(false)
 	select_button.set_text(time_format(time[0]) + " : " + time_format(time[1]))
 	popup_panel.set_visible(false)
+	_on_FieldControl_focus_exited()
 
 
 func _on_PopupPanel_popup_hide() -> void:
 	select_button.grab_focus()
 	select_button.set_pressed(false)
+
+
+func _on_MinuteLineEdit_text_entered(new_text: String) -> void:
+	min_spinbox.set_value(int(new_text))
+	_on_Validate_pressed()

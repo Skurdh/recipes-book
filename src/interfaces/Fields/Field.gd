@@ -14,6 +14,9 @@ export(String) var field_id: String = ""
 export(bool) var is_required: bool = true
 
 # Public variables
+var has_content: bool = false
+var field_content #:Variant
+
 
 # Onready variables
 
@@ -27,6 +30,17 @@ func _ready() -> void:
 	
 
 # Self functions
+func inject_data(content_data) -> void:
+	has_content = true
+	field_content = content_data
+	set_data(content_data)
+
+
+func is_empty() -> bool:
+	print("Must be overrided !")
+	return true
+
+
 func set_data(value) -> void:
 	print("Must be overrided !")
 

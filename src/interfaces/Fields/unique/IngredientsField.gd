@@ -66,10 +66,12 @@ func unload_indexes() -> void:
 	ingredients_field.index.clear()
 
 
+
 func set_data(value: Array) -> void:
 	for ing in value:
 		var item: Control = ingredient_item.instance()
 		item.populate(ing)
+		item.connect("deleted", self, "_on_FieldControl_focus_exited")
 		grid_container.add_child(item)
 
 
@@ -87,7 +89,7 @@ func clear_field() -> void:
 	$Form.clear()
 
 
-func print_field_error() -> void:
+func push_field_error() -> void:
 	print_error("Aucun ingrédient ajouté.")
 
 
@@ -95,6 +97,28 @@ func is_empty() -> bool:
 	if grid_container.get_child_count() == 0:
 		return true
 	return false
+
+
+func _is_data_same_as_fieldcontent() -> bool:
+	for new_ing in get_data():
+		for content_ing in field_content:
+			for key in new_ing.keys():
+				if content_ing.has(key) and new_ing[key] != content_ing[key]:
+					return false
+	return true
+
+
+func _on_FieldControl_focus_exited() -> void:
+	if has_content:
+		if check(false) and not _is_data_same_as_fieldcontent():
+			emit_signal("content_modified", "added")
+			return
+	else:
+		if check(false):
+			emit_signal("content_modified", "added")
+			return
+
+	emit_signal("content_modified", "deleted")
 
 
 # Signal functions

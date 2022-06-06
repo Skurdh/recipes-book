@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/fonts/PT-Italic_16.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/PT-Regular_16_Button.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/themes/Button_ItemPreview_Hover.tres" type="StyleBox" id=3]
+[ext_resource path="res://assets/themes/Button_ItemPreview_Pressed.tres" type="StyleBox" id=4]
+[ext_resource path="res://assets/textures/icons/edit.png" type="Texture" id=6]
+[ext_resource path="res://src/interfaces/Items/Recipe_MyRecipe_Item.gd" type="Script" id=7]
+[ext_resource path="res://assets/themes/Button_ItemPreview_Normal.tres" type="StyleBox" id=8]
+
+[node name="MyRecipeItem" type="HBoxContainer"]
+anchor_right = 1.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 0, 48 )
+size_flags_horizontal = 3
+script = ExtResource( 7 )
+
+[node name="View" type="Button" parent="."]
+margin_right = 1868.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 0, 48 )
+hint_tooltip = "Voir la recette"
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 8 )
+enabled_focus_mode = 0
+align = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="View"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 6
+
+[node name="Control" type="Control" parent="View/HBoxContainer"]
+margin_bottom = 48.0
+
+[node name="ID" type="Label" parent="View/HBoxContainer"]
+margin_left = 6.0
+margin_right = 54.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 0 )
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+clip_text = true
+
+[node name="Title" type="Label" parent="View/HBoxContainer"]
+margin_left = 60.0
+margin_right = 380.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 320, 0 )
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+clip_text = true
+
+[node name="Date" type="Label" parent="View/HBoxContainer"]
+margin_left = 386.0
+margin_right = 610.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 224, 0 )
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 1 )
+valign = 1
+
+[node name="Modify" type="Button" parent="."]
+margin_left = 1872.0
+margin_right = 1920.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 48, 48 )
+hint_tooltip = "Modifier la recette"
+focus_mode = 0
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/normal = ExtResource( 8 )
+enabled_focus_mode = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="Modify"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Modify/CenterContainer"]
+modulate = Color( 0.8, 0.807843, 0.827451, 1 )
+margin_left = 15.0
+margin_top = 15.0
+margin_right = 33.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 18, 18 )
+hint_tooltip = "Modifier la recette"
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6

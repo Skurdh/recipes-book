@@ -11,9 +11,10 @@ signal request_finished(task_infos)
 
 # Public variables
 enum {OK, VOID_DATA}
-const R_CATEGORY = ["Plats", "Desserts", "Petit-dej", "Goûter"]
+const R_CATEGORY = ["Plat", "Dessert", "Petit-dej", "Goûter"]
 const R_DIET = ["Poisson", "Viande", "Veggie"]
-const R_QUALITY = ["Sain", "Lourd"]
+const R_QUALITY = ["Léger", "Lourd"]
+const R_MONTH = ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]
 
 const _recipe_document_body: Dictionary = {
 #	"creation_date": "",
@@ -62,7 +63,6 @@ func init_load() -> void:
 	recipes_collection.connect("delete_document", self, "_on_FirestoreCollection_document_deleted")
 	
 	get_all_recipes()
-	print(get_size())
 
 
 func _sort_recipes_by_creation_date(a: Dictionary, b: Dictionary) -> bool:
@@ -87,13 +87,7 @@ func _generate_recipe_data(doc: FirestoreDocument) -> Dictionary:
 	return new_recipe
 
 
-# TEMP
-var user_id: Array = ["9wbcgkbQTkWi8RMMyjEZ2QxsClp1", "MgmgEoe6O3Pb8oPF98a74dnpfzj2", "avhF2StZgParFz6yIPh59C585Ny1 "]
-var user_name: Array = ["JoJo", "BigLoki", "SKU"]
-
-
 func add_recipe_doc(data: Array) -> void:
-	print(data)
 	var new_recipe_doc: Dictionary = {}
 	
 	for entry in data:
@@ -101,9 +95,6 @@ func add_recipe_doc(data: Array) -> void:
 			new_recipe_doc[entry.id] = entry.content
 	
 	if not new_recipe_doc.empty():
-		var i: int = randi() % 3
-		new_recipe_doc.author = user_name[i]
-		new_recipe_doc.author_id = user_id[i]
 		new_recipe_doc.author = Profil.get_username()
 		new_recipe_doc.author_id = Profil.get_id()
 #		new_recipe_doc.creation_date = _get_date_formated()
@@ -116,12 +107,12 @@ func update_recipe_doc(id: String, data: Array) -> void:
 	var updated_recipe_doc: Dictionary = {}
 	
 	for entry in data:
-		if _recipe_document_body.has(entry.id) and not entry.content.empty():
+		if _recipe_document_body.has(entry.id):
 			updated_recipe_doc[entry.id] = entry.content
 			
 	if not updated_recipe_doc.empty():
 #		updated_recipe_doc.last_modify_date = _get_date_formated()
-		recipes_collection.update(id, updated_recipe_doc)		
+		recipes_collection.update(id, updated_recipe_doc)
 	else:
 		emit_signal("request_finished", {"request_return": "update", "content": VOID_DATA})
 
@@ -157,6 +148,13 @@ func get_recipe_from_idx(idx: int) -> Dictionary:
 	return {}
 
 
+func get_idx_recipe(id: String) -> int:
+	for i in range(recipes_loaded.size()):
+		if recipes_loaded[i].ID == id:
+			return i
+	return -1
+	
+
 func get_recipes_from_author(author_id: String) -> Array:
 	var recipes: Array = []
 	
@@ -182,6 +180,17 @@ func get_size() -> int:
 	return recipes_count
 
 
+## Tools
+func tools_string_time_format(time_data: Array, compacted: bool= false) -> String:
+	var time_formated: String = ""
+	
+	if time_data[0] != 0:
+		time_formated += String(time_data[0]) + (" h " if not compacted else "h") + String(time_data[1]).pad_zeros(2) + (" min" if not compacted else "")
+	if time_data[1] != 0:
+		time_formated += String(time_data[1]).pad_zeros(2) + (" min" if not compacted else "min")
+	
+	return time_formated
+
 
 # Signal functions
 func _on_FirestoreCollection_error(code, status, message) -> void:
@@ -190,16 +199,17 @@ func _on_FirestoreCollection_error(code, status, message) -> void:
 
 
 func _on_FirestoreCollection_document_added(document: FirestoreDocument) -> void:
-	print(document)
 	recipes_loaded.push_front(_generate_recipe_data(document))
 	recipes_count = recipes_loaded.size()
 #	recipes_loaded.sort_custom(self, "favorite_sort") #TODO
 	emit_signal("request_finished", {"request_return": "add", "content": OK, "extra": document.doc_name})
 
 
-func _on_FirestoreCollection_document_updated(_document: FirestoreDocument) -> void:
-	print(_document)
-	emit_signal("request_finished", {"request_return": "update", "content": OK})
+func _on_FirestoreCollection_document_updated(document: FirestoreDocument) -> void:
+	var recipe_idx: int = get_idx_recipe(document.doc_name)
+	recipes_loaded[recipe_idx] = _generate_recipe_data(document)
+	
+	emit_signal("request_finished", {"request_return": "update", "content": OK, "extra": document.doc_name})
 
 
 func _on_FirestoreCollection_document_deleted() -> void:

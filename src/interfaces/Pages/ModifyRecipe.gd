@@ -2,31 +2,34 @@
 Script : NAME
 
 """
+
 extends CustomPopup
 
 # Signals
-signal recipe_opened(recipe_id)
+signal recipe_opened()
 
 # Export variable
 
 # Public variables
-var form_complee
+var recipe_id: String = ""
 # Onready variables
 
 
 # Setter Getter Functions
 
 # Callback functions
-func _ready():
-	custom_popup_centered()
 
 # Self functions
+func init(recipe_data: Dictionary) -> void:
+	recipe_id = recipe_data.ID
+	$Form.inject_data(recipe_data)
+
 
 # Signal functions
 func _on_Form_data_collected(data: Array):
-	RecipesManager.add_recipe_doc(data)
+	RecipesManager.update_recipe_doc(recipe_id, data)
 	var infos: Dictionary = yield(RecipesManager, "request_finished")
-	if infos.request_return == "add" and infos.content == 0:
+	if infos.request_return == "update" and infos.content == 0:
 		emit_signal("recipe_opened", infos.extra)
 		_on_Close_pressed()
 

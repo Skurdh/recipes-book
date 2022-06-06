@@ -16,6 +16,7 @@ var popups_stack: Array = []
 onready var createrecipe_popup_pck: PackedScene = preload("res://src/interfaces/Pages/CreateRecipe.tscn")
 onready var viewrecipe_popup_pck: PackedScene = preload("res://src/interfaces/Pages/ViewRecipe.tscn")
 onready var myrecipes_popup_pck: PackedScene = preload("res://src/interfaces/Pages/MyRecipes.tscn")
+onready var modifyrecipe_popup_pck: PackedScene = preload("res://src/interfaces/Pages/ModifyRecipe.tscn")
 
 onready var dark_bg: ColorRect = $ColorRect2
 
@@ -51,6 +52,7 @@ func _on_CustomPopup_closed() -> void:
 	popups_stack.pop_back()
 	if popups_stack.size() > 0:
 		popups_stack.back().set_visible(true)
+		popups_stack.back().refresh()
 	else:
 		dark_bg.set_visible(false)
 
@@ -61,7 +63,10 @@ func _on_CustomPopup_closed() -> void:
 
 
 func _on_MyRecipeButton_pressed():
-	open_popup(myrecipes_popup_pck).connect("recipe_opened", self, "_on_recipe_opened")
+	var new_popup: CustomPopup = open_popup(myrecipes_popup_pck)
+	new_popup.connect("recipe_opened", self, "_on_recipe_opened")
+	new_popup.connect("recipe_creation_request", self, "_on_AddRecipeButton_pressed")
+	new_popup.connect("recipe_modify_request", self, "_on_recipe_modified")
 
 
 func _on_AddRecipeButton_pressed():
@@ -72,4 +77,6 @@ func _on_recipe_opened(recipe_id: String) -> void:
 	open_popup(viewrecipe_popup_pck, RecipesManager.get_recipe_from_id(recipe_id))
 
 
+func _on_recipe_modified(recipe_id: String) -> void:
+	open_popup(modifyrecipe_popup_pck, RecipesManager.get_recipe_from_id(recipe_id)).connect("recipe_opened", self, "_on_recipe_opened")
 

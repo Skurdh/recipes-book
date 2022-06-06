@@ -44,11 +44,15 @@ func custom_popup_centered() -> void:
 	popup()
 	
 	var viewport_size: Vector2 = get_viewport().get_size()
-	var popup_size: Vector2 = Vector2(viewport_size.x - viewport_size.x * 16 / 100 * 2, viewport_size.y - 52) if not enlarged else Vector2(viewport_size.x - 52, viewport_size.y - 52) 
+	var popup_size: Vector2 = Vector2(max(rect_min_size.x, viewport_size.x - viewport_size.x * 16 / 100 * 2), max(rect_min_size.y, viewport_size.y - 52)) if not enlarged else Vector2(viewport_size.x - 52, viewport_size.y - 52) 
 	var popup_position: Vector2 = Vector2(viewport_size.x / 2 - popup_size.x / 2, 26) if not enlarged else Vector2(26, 26)
 	
 	_set_position(popup_position)
 	_set_size(popup_size)
+
+
+func refresh() -> void:
+	pass
 
 
 # Signal functions

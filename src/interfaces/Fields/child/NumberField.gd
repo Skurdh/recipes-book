@@ -44,12 +44,11 @@ func push_field_error() -> void:
 
 
 func is_empty() -> bool:
-	return false
-#	if spin_box == 0:
-#	if line_edit.text == "0" or line_edit.text == "":
-#		return true
-#	else:
-#		return false
+	var line_edit: LineEdit = spin_box.get_line_edit()
+	if line_edit.text == "0" or not line_edit.text.is_valid_integer():
+		return true
+	else:
+		return false
 
 
 # Signal functions
@@ -58,3 +57,7 @@ func _on_LineEdit_focus_entered() -> void:
 	line_edit.set("custom_styles/normal", null)
 #	line_edit.set_text("0")
 #	line_edit.clear()
+
+
+func _on_SpinBox_value_changed(_value: float) -> void:
+	_on_FieldControl_focus_exited()
