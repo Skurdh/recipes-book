@@ -17,6 +17,8 @@ onready var createrecipe_popup_pck: PackedScene = preload("res://src/interfaces/
 onready var viewrecipe_popup_pck: PackedScene = preload("res://src/interfaces/Pages/ViewRecipe.tscn")
 onready var myrecipes_popup_pck: PackedScene = preload("res://src/interfaces/Pages/MyRecipes.tscn")
 onready var modifyrecipe_popup_pck: PackedScene = preload("res://src/interfaces/Pages/ModifyRecipe.tscn")
+onready var helpcenter_popup_pck: PackedScene = preload("res://src/interfaces/Pages/HelpCenter.tscn")
+
 
 onready var dark_bg: ColorRect = $ColorRect2
 
@@ -80,3 +82,6 @@ func _on_recipe_opened(recipe_id: String) -> void:
 func _on_recipe_modified(recipe_id: String) -> void:
 	open_popup(modifyrecipe_popup_pck, RecipesManager.get_recipe_from_id(recipe_id)).connect("recipe_opened", self, "_on_recipe_opened")
 
+
+func _on_HelpCenter_pressed() -> void:
+	open_popup(helpcenter_popup_pck)

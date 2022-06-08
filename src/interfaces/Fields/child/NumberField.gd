@@ -20,7 +20,7 @@ onready var error_stylebox: StyleBoxFlat = preload("res://assets/themes/AutoComp
 # Callback functions
 func _ready() -> void:
 # warning-ignore:return_value_discarded
-	spin_box.get_line_edit().connect("focus_entered", self, "_on_LineEdit_focus_entered")
+	spin_box.get_line_edit().connect("text_changed", self, "_on_LineEdit_text_changed")
 
 # Self functions
 func set_data(value: float) -> void:
@@ -45,7 +45,7 @@ func push_field_error() -> void:
 
 func is_empty() -> bool:
 	var line_edit: LineEdit = spin_box.get_line_edit()
-	if line_edit.text == "0" or not line_edit.text.is_valid_integer():
+	if not line_edit.text.is_valid_integer():
 		return true
 	else:
 		return false

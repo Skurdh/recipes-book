@@ -23,6 +23,7 @@ var fields_state: Array = []
 
 # Onready variables
 
+
 # Setter Getter Functions
 
 # Callback functions
@@ -91,9 +92,8 @@ func verify_fields_state() -> void:
 	
 	emit_signal("form_completed")
 	get_node(validation_button).set_disabled(false)
-	
-	
-	
+
+
 # Signal functions
 func _on_ValidationButton_pressed() -> void:
 	var data: Array = collect()
@@ -107,6 +107,8 @@ func _on_ValidationButton_pressed() -> void:
 
 func _on_CancelButton_pressed() -> void:
 	clear()
+	if mode != 0:
+		get_node(validation_button).set_disabled(true)
 	emit_signal("form_aborted")
 
 

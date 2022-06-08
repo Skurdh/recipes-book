@@ -12,6 +12,7 @@ export(String) var placeholder_label: String = ""
 export(bool) var only_suggestion: bool = false
 export(bool) var approximate: bool = false
 export(int) var limit: int = 10
+export(int, "TOP", "BOTTOM") var popup_pos: int = 0
 
 
 # Public variables
@@ -42,7 +43,10 @@ func set_editable(value: bool) -> void:
 
 func get_popup_position() -> Rect2:
 	var size_y: float = item_list.get_item_count() * 36 + 16
-	return Rect2(get_global_position() - Vector2(0, size_y), Vector2(get_size().x, size_y))
+	if popup_pos == 0:
+		return Rect2(get_global_position() - Vector2(0, size_y), Vector2(get_size().x, size_y))
+	else:
+		return Rect2(get_global_position() + Vector2(0, get_size().y), Vector2(get_size().x, size_y))
 
 
 func close_popup() -> void:
@@ -74,6 +78,8 @@ func get_suggestions(new_text: String) -> Array:
 
 func select_suggestion() -> void:
 	var metadata: String = item_list.get_item_metadata(selected_idx)
+	if metadata == "-1": return
+	
 	line_edit.set_text(metadata)
 	line_edit.set_cursor_position(line_edit.get_text().length())
 	
@@ -96,8 +102,7 @@ func check_abbreviations(text: String) -> bool:
 
 
 func set_data(value: String) -> void:
-	print("TODO SET DATA SUGGESTION INPUT FIELD")
-	pass
+	line_edit.set_text(value)
 
 
 func get_data() -> String:
@@ -106,6 +111,8 @@ func get_data() -> String:
 
 func clear_field() -> void:
 	.clear_field()
+	line_edit.set_placeholder(placeholder_label)
+	line_edit.set("custom_styles/normal", null)
 	line_edit.set_text("")
 
 
@@ -139,9 +146,16 @@ func _on_LineEdit_text_changed(new_text: String) -> void:
 			var idx: int = item_list.get_item_count()
 			item_list.add_item(suggestion[0])
 			item_list.set_item_metadata(idx, suggestion[1] if not suggestion[1].empty() else suggestion[0])
+			selected_idx = item_list.get_item_count()
+	else:
+		item_list.add_item("Aucune suggestion.", null, false)
+		item_list.set_item_metadata(0, "-1")
 
-		selected_idx = item_list.get_item_count()
-		suggestions_popup.popup(get_popup_position())
+	if new_text != "":
+		line_edit.set_placeholder(placeholder_label)
+		line_edit.set("custom_styles/normal", null)
+	suggestions_popup.popup(get_popup_position())
+	_on_FieldControl_focus_exited()
 
 
 func _on_LineEdit_focus_entered() -> void:

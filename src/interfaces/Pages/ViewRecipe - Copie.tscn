@@ -1,7 +1,7 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://src/interfaces/Pages/CustomPopup.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/fonts/PTSerif-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/fonts/PT-BoldItalic_24.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/fonts/PTSerif-Italic.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/fonts/PTSerif-BoldItalic.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://src/interfaces/Items/unique/SeasonInfoItem.tscn" type="PackedScene" id=5]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/textures/icons/filled_heart.png" type="Texture" id=8]
 [ext_resource path="res://src/interfaces/Items/InfoItem.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/textures/icons/edit.png" type="Texture" id=10]
+[ext_resource path="res://assets/fonts/PT-Bold_24.tres" type="DynamicFont" id=11]
 [ext_resource path="res://src/interfaces/Pages/ViewRecipe.gd" type="Script" id=14]
 [ext_resource path="res://assets/fonts/PT-Bold_16.tres" type="DynamicFont" id=17]
 [ext_resource path="res://assets/textures/panier-repas.jpg" type="Texture" id=18]
@@ -18,10 +19,6 @@
 [ext_resource path="res://assets/textures/icons/milk_free.png" type="Texture" id=21]
 [ext_resource path="res://assets/textures/icons/contains_sugar.png" type="Texture" id=22]
 [ext_resource path="res://assets/textures/icons/gluten_free.png" type="Texture" id=23]
-
-[sub_resource type="DynamicFont" id=1]
-size = 24
-font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 18
@@ -49,10 +46,6 @@ color = Color( 0.231373, 0.254902, 0.305882, 1 )
 grow_begin = -8.0
 grow_end = -8.0
 
-[sub_resource type="DynamicFont" id=7]
-size = 24
-font_data = ExtResource( 4 )
-
 [sub_resource type="StyleBoxFlat" id=10]
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -61,21 +54,20 @@ content_margin_bottom = 6.0
 bg_color = Color( 0.14902, 0.172549, 0.231373, 1 )
 
 [node name="ViewRecipe" instance=ExtResource( 1 )]
-visible = true
 rect_min_size = Vector2( 1012, 0 )
 script = ExtResource( 14 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer" index="1"]
 margin_top = 34.0
 margin_right = 1888.0
-margin_bottom = 1040.0
+margin_bottom = 535.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 scroll_horizontal_enabled = false
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer" index="0"]
-margin_right = 1888.0
-margin_bottom = 1006.0
+margin_right = 1876.0
+margin_bottom = 630.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 24
@@ -86,14 +78,14 @@ custom_constants/margin_bottom = 12
 [node name="Content" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer" index="0"]
 margin_left = 24.0
 margin_top = 12.0
-margin_right = 1864.0
-margin_bottom = 994.0
+margin_right = 1852.0
+margin_bottom = 618.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 16
 
 [node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content" index="0"]
-margin_right = 1840.0
+margin_right = 1828.0
 margin_bottom = 320.0
 rect_min_size = Vector2( 0, 320 )
 size_flags_horizontal = 3
@@ -103,26 +95,26 @@ stretch_mode = 7
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content" index="1"]
 margin_top = 336.0
-margin_right = 1840.0
+margin_right = 1828.0
 margin_bottom = 606.0
 custom_constants/margin_right = 24
 custom_constants/margin_left = 24
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer" index="0"]
 margin_left = 24.0
-margin_right = 1816.0
+margin_right = 1804.0
 margin_bottom = 270.0
 custom_constants/separation = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer" index="0"]
-margin_right = 1792.0
+margin_right = 1780.0
 margin_bottom = 40.0
 
 [node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
 margin_right = 212.0
 margin_bottom = 40.0
 size_flags_vertical = 1
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 11 )
 text = "Titre de la recette"
 valign = 2
 
@@ -172,9 +164,9 @@ __meta__ = {
 }
 
 [node name="TextureButton" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/HBoxContainer" index="3"]
-margin_left = 1760.0
+margin_left = 1748.0
 margin_top = 4.0
-margin_right = 1792.0
+margin_right = 1780.0
 margin_bottom = 36.0
 hint_tooltip = "Ajouter en favori"
 focus_mode = 0
@@ -190,7 +182,7 @@ stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer" index="1"]
 margin_top = 48.0
-margin_right = 1792.0
+margin_right = 1780.0
 margin_bottom = 270.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -199,12 +191,12 @@ custom_constants/margin_left = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer" index="0"]
 margin_left = 8.0
-margin_right = 1784.0
+margin_right = 1772.0
 margin_bottom = 222.0
 custom_constants/separation = 36
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" index="0"]
-margin_right = 1776.0
+margin_right = 1764.0
 margin_bottom = 22.0
 mouse_filter = 2
 custom_constants/separation = 8
@@ -295,8 +287,8 @@ icon = "qualities"
 create_atlas = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="12"]
-margin_left = 1756.0
-margin_right = 1776.0
+margin_left = 1744.0
+margin_right = 1764.0
 margin_bottom = 22.0
 size_flags_horizontal = 10
 custom_constants/separation = 14
@@ -344,7 +336,7 @@ rect_min_size = Vector2( 20, 0 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" index="1"]
 margin_top = 58.0
-margin_right = 1776.0
+margin_right = 1764.0
 margin_bottom = 222.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -462,25 +454,25 @@ text = "Ajouter au panier"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" index="1"]
 margin_left = 320.0
-margin_right = 1776.0
+margin_right = 1764.0
 margin_bottom = 164.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 22
 
 [node name="Instructions" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" index="0"]
-margin_right = 1456.0
+margin_right = 1444.0
 margin_bottom = 44.0
 
 [node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Instructions" index="0"]
-margin_right = 1456.0
+margin_right = 1444.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = ExtResource( 2 )
 text = "Préparation"
 
 [node name="InstructionsRoot" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Instructions" index="1"]
 margin_top = 44.0
-margin_right = 1456.0
+margin_right = 1444.0
 margin_bottom = 44.0
 custom_constants/separation = 8
 
@@ -493,7 +485,7 @@ margin_bottom = 152.0
 [node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Note" index="0"]
 margin_right = 480.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = ExtResource( 2 )
 text = "Note de l'auteur"
 
 [node name="PanelContainer" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/Content/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Note" index="1"]
@@ -515,7 +507,10 @@ custom_fonts/font = ExtResource( 19 )
 autowrap = true
 
 [node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer" index="2"]
-margin_top = 1044.0
+margin_top = 539.0
 margin_right = 1888.0
-margin_bottom = 1068.0
+margin_bottom = 563.0
 rect_min_size = Vector2( 0, 24 )
+
+[node name="MarginContainer" parent="Panel/MarginContainer/VBoxContainer" index="3"]
+margin_top = 567.0

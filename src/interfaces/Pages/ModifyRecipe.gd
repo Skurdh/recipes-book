@@ -21,6 +21,7 @@ var recipe_id: String = ""
 
 # Self functions
 func init(recipe_data: Dictionary) -> void:
+	$Panel/MarginContainer/VBoxContainer/TopBar/Label.set_text("Modifier ma recette : " + recipe_data.title)
 	recipe_id = recipe_data.ID
 	$Form.inject_data(recipe_data)
 

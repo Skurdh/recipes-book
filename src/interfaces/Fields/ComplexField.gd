@@ -91,6 +91,7 @@ func collect(ignore_error: bool = false) -> Dictionary:
 
 
 func clear_field() -> void:
+	clear_error()
 	if has_content:
 		has_content = false
 		field_content = null

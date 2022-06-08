@@ -1,0 +1,128 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/themes/Button_Custom_Normal.tres" type="StyleBox" id=1]
+[ext_resource path="res://assets/themes/Button_Custom_Hover.tres" type="StyleBox" id=2]
+[ext_resource path="res://src/interfaces/Fields/child/SuggestionInputField.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/interfaces/Fields/child/SelectField.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/interfaces/Fields/child/InputField.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/interfaces/Fields/child/NumberField.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/fonts/PT-Bold_16.tres" type="DynamicFont" id=7]
+[ext_resource path="res://src/interfaces/Form/AddIngredientForm.gd" type="Script" id=8]
+[ext_resource path="res://src/interfaces/Form/Form.gd" type="Script" id=9]
+[ext_resource path="res://assets/themes/Button_Custom_Pressed.tres" type="StyleBox" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[node name="IngredientForm" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+script = ExtResource( 8 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+custom_constants/separation = 8
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 1920.0
+margin_bottom = 30.0
+custom_constants/shadow_offset_y = 0
+custom_fonts/font = ExtResource( 7 )
+text = "Ajouter un ingrédient"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 38.0
+margin_right = 1920.0
+margin_bottom = 74.0
+custom_constants/separation = 6
+
+[node name="QuantityField" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 636.0
+margin_bottom = 36.0
+field_id = "quantity"
+is_required = true
+title_visible = false
+
+[node name="UnitField" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 642.0
+margin_right = 1278.0
+margin_bottom = 36.0
+field_id = "unit"
+is_required = false
+title_visible = false
+placeholder_label = "Unité"
+only_suggestion = true
+approximate = true
+limit = 8
+
+[node name="IngredientField" parent="VBoxContainer/HBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1284.0
+margin_right = 1920.0
+margin_bottom = 36.0
+field_id = "ingredient"
+is_required = false
+title_visible = false
+placeholder_label = "Ingrédient"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 82.0
+margin_right = 1920.0
+margin_bottom = 118.0
+custom_constants/separation = 10
+
+[node name="AdditionalField" parent="VBoxContainer/HBoxContainer2" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1814.0
+margin_bottom = 36.0
+field_id = "add"
+is_required = false
+title_visible = false
+placeholder_text = "Complément"
+
+[node name="SelectField" parent="VBoxContainer/HBoxContainer2" instance=ExtResource( 4 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 912.0
+margin_right = 1814.0
+margin_bottom = 36.0
+field_id = "link_r"
+is_required = false
+title_visible = false
+
+[node name="Add" type="Button" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 1824.0
+margin_right = 1920.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 96, 36 )
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 7 )
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 12 )
+custom_styles/focus = ExtResource( 1 )
+custom_styles/disabled = ExtResource( 1 )
+custom_styles/normal = ExtResource( 1 )
+text = "Ajouter"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Form" type="Node" parent="."]
+script = ExtResource( 9 )
+mode = 1
+fields = [ NodePath("../VBoxContainer/HBoxContainer/QuantityField"), NodePath("../VBoxContainer/HBoxContainer/UnitField"), NodePath("../VBoxContainer/HBoxContainer/IngredientField"), NodePath("../VBoxContainer/HBoxContainer2/AdditionalField"), NodePath("../VBoxContainer/HBoxContainer2/SelectField") ]
+validation_button = NodePath("../VBoxContainer/HBoxContainer2/Add")
+
+[connection signal="data_collected" from="Form" to="." method="_on_Form_data_collected"]

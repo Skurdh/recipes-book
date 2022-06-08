@@ -12,8 +12,8 @@ grow_begin = -5.0
 grow_end = -5.0
 
 [node name="MyRecipes" instance=ExtResource( 1 )]
-visible = true
 script = ExtResource( 10 )
+page_name = "Mes recettes"
 
 [node name="Label" parent="Panel/MarginContainer/VBoxContainer/TopBar" index="0"]
 margin_top = 6.0
@@ -58,7 +58,7 @@ size_flags_vertical = 3
 margin_right = 1888.0
 margin_bottom = 30.0
 custom_fonts/font = ExtResource( 2 )
-text = "Vos recettes publiées :"
+text = "Mes recettes publiées :"
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/ContainsRecipe" index="1"]
 margin_top = 34.0

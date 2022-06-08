@@ -1,0 +1,556 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://src/interfaces/Fields/child/TextField.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/interfaces/CustomButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/interfaces/Fields/child/InputField.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/interfaces/Form/Form.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/interfaces/Pages/CustomPopup.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/fonts/PT-Bold_16.tres" type="DynamicFont" id=6]
+[ext_resource path="res://src/interfaces/Pages/HelpCenter.gd" type="Script" id=7]
+[ext_resource path="res://assets/textures/icons/comment.png" type="Texture" id=8]
+[ext_resource path="res://assets/textures/icons/balance.png" type="Texture" id=9]
+[ext_resource path="res://assets/textures/icons/store.png" type="Texture" id=10]
+[ext_resource path="res://assets/textures/icons/feedback.png" type="Texture" id=11]
+[ext_resource path="res://assets/fonts/PT-Regular_16.tres" type="DynamicFont" id=12]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.156863, 0.184314, 0.247059, 1 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_top = 4.0
+shadow_color = Color( 0.0980392, 0.109804, 0.137255, 0.768627 )
+shadow_size = 2
+shadow_offset = Vector2( 0, 2 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.156863, 0.184314, 0.247059, 1 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+shadow_color = Color( 0.0980392, 0.109804, 0.137255, 0.768627 )
+shadow_offset = Vector2( 0, 2 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.14902, 0.172549, 0.231373, 1 )
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_top = 4.0
+shadow_color = Color( 0.0980392, 0.109804, 0.137255, 0.768627 )
+shadow_size = 2
+shadow_offset = Vector2( 0, 2 )
+
+[node name="HelpCenter" instance=ExtResource( 5 )]
+visible = true
+rect_min_size = Vector2( 1050, 0 )
+script = ExtResource( 7 )
+page_name = "Support"
+
+[node name="Label" parent="Panel/MarginContainer/VBoxContainer/TopBar" index="0"]
+margin_top = 6.0
+margin_bottom = 23.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer" index="1"]
+visible = false
+margin_top = 34.0
+margin_right = 1888.0
+margin_bottom = 1068.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 128
+custom_constants/margin_top = 16
+custom_constants/margin_left = 128
+custom_constants/margin_bottom = 48
+
+[node name="ButtonsRoot" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer" index="0"]
+margin_left = 128.0
+margin_top = 381.0
+margin_right = 1760.0
+margin_bottom = 621.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_constants/hseparation = 32
+columns = 4
+
+[node name="Bug" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot" index="0"]
+margin_right = 384.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 160, 240 )
+focus_mode = 0
+size_flags_horizontal = 3
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 1 )
+enabled_focus_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot/Bug" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = 12
+custom_constants/margin_top = 32
+custom_constants/margin_left = 12
+custom_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot/Bug/MarginContainer" index="0"]
+margin_left = 12.0
+margin_top = 32.0
+margin_right = 372.0
+margin_bottom = 208.0
+mouse_filter = 2
+custom_constants/separation = 24
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot/Bug/MarginContainer/VBoxContainer" index="0"]
+modulate = Color( 0.415686, 0.615686, 0.917647, 1 )
+margin_right = 360.0
+margin_bottom = 122.0
+rect_min_size = Vector2( 64, 64 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 11 )
+stretch_mode = 4
+
+[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot/Bug/MarginContainer/VBoxContainer" index="1"]
+margin_top = 146.0
+margin_right = 360.0
+margin_bottom = 176.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 6 )
+text = "Signaler un bug"
+align = 1
+autowrap = true
+
+[node name="Suggestion" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot" index="1"]
+margin_left = 416.0
+margin_right = 800.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 160, 240 )
+focus_mode = 0
+size_flags_horizontal = 3
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 1 )
+enabled_focus_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot/Suggestion" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = 12
+custom_constants/margin_top = 32
+custom_constants/margin_left = 12
+custom_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot/Suggestion/MarginContainer" index="0"]
+margin_left = 12.0
+margin_top = 32.0
+margin_right = 372.0
+margin_bottom = 208.0
+mouse_filter = 2
+custom_constants/separation = 24
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot/Suggestion/MarginContainer/VBoxContainer" index="0"]
+modulate = Color( 0.415686, 0.615686, 0.917647, 1 )
+margin_right = 360.0
+margin_bottom = 122.0
+rect_min_size = Vector2( 64, 64 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 8 )
+stretch_mode = 4
+
+[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot/Suggestion/MarginContainer/VBoxContainer" index="1"]
+margin_top = 146.0
+margin_right = 360.0
+margin_bottom = 176.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 6 )
+text = "Faire une suggestion"
+align = 1
+autowrap = true
+
+[node name="Unit" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot" index="2"]
+margin_left = 832.0
+margin_right = 1216.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 160, 240 )
+focus_mode = 0
+size_flags_horizontal = 3
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 1 )
+enabled_focus_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot/Unit" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = 12
+custom_constants/margin_top = 32
+custom_constants/margin_left = 12
+custom_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot/Unit/MarginContainer" index="0"]
+margin_left = 12.0
+margin_top = 32.0
+margin_right = 372.0
+margin_bottom = 208.0
+mouse_filter = 2
+custom_constants/separation = 24
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot/Unit/MarginContainer/VBoxContainer" index="0"]
+modulate = Color( 0.415686, 0.615686, 0.917647, 1 )
+margin_right = 360.0
+margin_bottom = 122.0
+rect_min_size = Vector2( 64, 64 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 9 )
+stretch_mode = 4
+
+[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot/Unit/MarginContainer/VBoxContainer" index="1"]
+margin_top = 146.0
+margin_right = 360.0
+margin_bottom = 176.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 6 )
+text = "Proposer une unité"
+align = 1
+autowrap = true
+
+[node name="Ingredient" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot" index="3"]
+margin_left = 1248.0
+margin_right = 1632.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 160, 240 )
+focus_mode = 0
+size_flags_horizontal = 3
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 1 )
+enabled_focus_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot/Ingredient" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+custom_constants/margin_right = 12
+custom_constants/margin_top = 32
+custom_constants/margin_left = 12
+custom_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot/Ingredient/MarginContainer" index="0"]
+margin_left = 12.0
+margin_top = 32.0
+margin_right = 372.0
+margin_bottom = 208.0
+mouse_filter = 2
+custom_constants/separation = 24
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot/Ingredient/MarginContainer/VBoxContainer" index="0"]
+modulate = Color( 0.415686, 0.615686, 0.917647, 1 )
+margin_right = 360.0
+margin_bottom = 122.0
+rect_min_size = Vector2( 64, 64 )
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 10 )
+stretch_mode = 4
+
+[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot/Ingredient/MarginContainer/VBoxContainer" index="1"]
+margin_top = 146.0
+margin_right = 360.0
+margin_bottom = 176.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 6 )
+text = "Proposer un ingrédient"
+align = 1
+autowrap = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer" index="2"]
+margin_top = 34.0
+margin_right = 1888.0
+margin_bottom = 1068.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 32
+custom_constants/margin_top = 16
+custom_constants/margin_left = 32
+custom_constants/margin_bottom = 48
+
+[node name="FormRoot" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2" index="0"]
+margin_left = 32.0
+margin_top = 16.0
+margin_right = 1856.0
+margin_bottom = 986.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BugPage" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot" index="0"]
+visible = false
+margin_right = 1824.0
+margin_bottom = 930.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 24
+
+[node name="Return" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/BugPage" index="0" instance=ExtResource( 2 )]
+margin_top = -40.0
+margin_right = 96.0
+margin_bottom = -4.0
+rect_min_size = Vector2( 96, 36 )
+focus_mode = 1
+size_flags_horizontal = 0
+size_flags_vertical = 0
+enabled_focus_mode = 1
+text = "Retour"
+
+[node name="InputField" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/BugPage" index="1" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1824.0
+margin_bottom = 70.0
+size_flags_vertical = 1
+field_id = "where"
+title = "Où avez vous rencontré le bug ?"
+
+[node name="TextField" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/BugPage" index="2" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 94.0
+margin_right = 1824.0
+margin_bottom = 870.0
+field_id = "descr"
+title = "Décrivez le bug"
+separated_lines = false
+
+[node name="Submit" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/BugPage" index="3" instance=ExtResource( 2 )]
+margin_top = 894.0
+margin_right = 1824.0
+margin_bottom = 930.0
+size_flags_vertical = 1
+text = "Envoyer"
+
+[node name="BugForm" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/BugPage" index="4" instance=ExtResource( 4 )]
+mode = 1
+fields = [ NodePath("../InputField"), NodePath("../TextField") ]
+validation_button = NodePath("../Submit")
+cancel_button = NodePath("../Return")
+
+[node name="SuggestionPage" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot" index="1"]
+visible = false
+margin_top = -40.0
+margin_right = 1824.0
+margin_bottom = 930.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 24
+
+[node name="Return2" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/SuggestionPage" index="0" instance=ExtResource( 2 )]
+margin_top = 0.0
+margin_right = 96.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 96, 36 )
+focus_mode = 1
+size_flags_horizontal = 0
+size_flags_vertical = 0
+enabled_focus_mode = 1
+text = "Retour"
+
+[node name="TextField" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/SuggestionPage" index="1" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 60.0
+margin_right = 1824.0
+margin_bottom = 910.0
+rect_min_size = Vector2( 0, 446 )
+field_id = "descr"
+title = "Parlez nous de votre suggestion"
+separated_lines = false
+
+[node name="Submit" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/SuggestionPage" index="2" instance=ExtResource( 2 )]
+margin_top = 934.0
+margin_right = 1824.0
+margin_bottom = 970.0
+size_flags_vertical = 1
+text = "Envoyer"
+
+[node name="SuggestionForm" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/SuggestionPage" index="3" instance=ExtResource( 4 )]
+mode = 1
+fields = [ NodePath("../TextField") ]
+validation_button = NodePath("../Submit")
+cancel_button = NodePath("../Return2")
+
+[node name="UnitPage" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot" index="2"]
+visible = false
+margin_top = -40.0
+margin_right = 1824.0
+margin_bottom = 930.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 24
+
+[node name="Return3" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/UnitPage" index="0" instance=ExtResource( 2 )]
+margin_top = 0.0
+margin_right = 96.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 96, 36 )
+focus_mode = 1
+size_flags_horizontal = 0
+size_flags_vertical = 0
+enabled_focus_mode = 1
+text = "Retour"
+
+[node name="InputField" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/UnitPage" index="1" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 60.0
+margin_right = 1824.0
+margin_bottom = 130.0
+size_flags_vertical = 1
+field_id = "name"
+title = "Nom de l'unité"
+
+[node name="InputField2" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/UnitPage" index="2" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 154.0
+margin_right = 1824.0
+margin_bottom = 224.0
+size_flags_vertical = 1
+field_id = "abbr"
+is_required = false
+title = "Abréviation de l'unité (non obligatoire)"
+
+[node name="Submit" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/UnitPage" index="3" instance=ExtResource( 2 )]
+margin_top = 415.0
+margin_right = 1824.0
+margin_bottom = 451.0
+size_flags_vertical = 10
+text = "Envoyer"
+
+[node name="UnitForm" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/UnitPage" index="4" instance=ExtResource( 4 )]
+mode = 1
+fields = [ NodePath("../InputField"), NodePath("../InputField2") ]
+validation_button = NodePath("../Submit")
+cancel_button = NodePath("../Return3")
+
+[node name="IngredientPage" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot" index="3"]
+visible = false
+margin_top = -40.0
+margin_right = 1824.0
+margin_bottom = 930.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 24
+
+[node name="Return4" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/IngredientPage" index="0" instance=ExtResource( 2 )]
+margin_top = 0.0
+margin_right = 96.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 96, 36 )
+focus_mode = 1
+size_flags_horizontal = 0
+size_flags_vertical = 0
+enabled_focus_mode = 1
+text = "Retour"
+
+[node name="InputField" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/IngredientPage" index="1" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 60.0
+margin_right = 1824.0
+margin_bottom = 130.0
+size_flags_vertical = 1
+field_id = "name"
+title = "Nom de l'ingrédient"
+
+[node name="Submit" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/IngredientPage" index="2" instance=ExtResource( 2 )]
+margin_top = 934.0
+margin_right = 1824.0
+margin_bottom = 970.0
+size_flags_vertical = 10
+text = "Envoyer"
+
+[node name="IngredientForm" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/IngredientPage" index="3" instance=ExtResource( 4 )]
+mode = 1
+fields = [ NodePath("../InputField") ]
+validation_button = NodePath("../Submit")
+cancel_button = NodePath("../Return4")
+
+[node name="MarginContainer3" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer" index="3"]
+visible = false
+margin_top = 34.0
+margin_right = 1888.0
+margin_bottom = 1068.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 128
+custom_constants/margin_top = 16
+custom_constants/margin_left = 128
+custom_constants/margin_bottom = 48
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer3" index="0"]
+margin_left = 128.0
+margin_top = 16.0
+margin_right = 1760.0
+margin_bottom = 986.0
+custom_constants/separation = 24
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer" index="0"]
+margin_top = 442.0
+margin_right = 1632.0
+margin_bottom = 467.0
+custom_fonts/font = ExtResource( 12 )
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer" index="1"]
+margin_top = 491.0
+margin_right = 1632.0
+margin_bottom = 527.0
+custom_constants/separation = 36
+alignment = 1
+
+[node name="Return" parent="Panel/MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer" index="0" instance=ExtResource( 2 )]
+margin_left = 670.0
+margin_top = 0.0
+margin_right = 798.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 128, 36 )
+text = "Retour"
+
+[node name="Exit" parent="Panel/MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer" index="1" instance=ExtResource( 2 )]
+margin_left = 834.0
+margin_top = 0.0
+margin_right = 962.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 128, 36 )
+text = "Fermer"
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot/Bug" to="." method="_on_Bug_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot/Suggestion" to="." method="_on_Suggestion_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot/Unit" to="." method="_on_Unit_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/MarginContainer/ButtonsRoot/Ingredient" to="." method="_on_Ingredient_pressed"]
+[connection signal="data_collected" from="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/BugPage/BugForm" to="." method="_on_BugForm_data_collected"]
+[connection signal="form_aborted" from="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/BugPage/BugForm" to="." method="_on_Form_aborted"]
+[connection signal="data_collected" from="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/SuggestionPage/SuggestionForm" to="." method="_on_SuggestionForm_data_collected"]
+[connection signal="form_aborted" from="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/SuggestionPage/SuggestionForm" to="." method="_on_Form_aborted"]
+[connection signal="data_collected" from="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/UnitPage/UnitForm" to="." method="_on_UnitForm_data_collected"]
+[connection signal="form_aborted" from="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/UnitPage/UnitForm" to="." method="_on_Form_aborted"]
+[connection signal="data_collected" from="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/IngredientPage/IngredientForm" to="." method="_on_IngredientForm_data_collected"]
+[connection signal="form_aborted" from="Panel/MarginContainer/VBoxContainer/MarginContainer2/FormRoot/IngredientPage/IngredientForm" to="." method="_on_Form_aborted"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer/Return" to="." method="_on_Form_aborted"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/MarginContainer3/VBoxContainer/HBoxContainer/Exit" to="." method="_on_Exit_pressed"]

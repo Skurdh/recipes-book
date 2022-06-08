@@ -15,7 +15,5 @@ rect_min_size = Vector2( 0, 36 )
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "- Sélectionner -"
-items = [ "- Sélectionner -", null, true, 0, null ]
-selected = 0
 
 [connection signal="item_selected" from="HBoxContainer2/OptionButton" to="." method="_on_OptionButton_item_selected"]

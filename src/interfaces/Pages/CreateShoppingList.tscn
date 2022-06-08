@@ -1,0 +1,425 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://assets/themes/Button_Custom_Normal.tres" type="StyleBox" id=1]
+[ext_resource path="res://assets/themes/Button_Custom_Hover.tres" type="StyleBox" id=2]
+[ext_resource path="res://src/interfaces/Fields/child/SuggestionInputField.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/interfaces/Pages/CustomPopup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/interfaces/Fields/child/InputField.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/interfaces/CustomButton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/interfaces/Fields/child/NumberField.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/interfaces/Fields/child/SelectField.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/fonts/PT-Bold_16.tres" type="DynamicFont" id=9]
+[ext_resource path="res://assets/fonts/PT-BoldItalic_16.tres" type="DynamicFont" id=10]
+[ext_resource path="res://assets/fonts/PT-Bold_24.tres" type="DynamicFont" id=11]
+[ext_resource path="res://src/interfaces/Pages/CreateShoppingList.gd" type="Script" id=12]
+[ext_resource path="res://assets/themes/Button_Custom_Pressed.tres" type="StyleBox" id=13]
+[ext_resource path="res://assets/fonts/PT-BoldItalic_24.tres" type="DynamicFont" id=14]
+[ext_resource path="res://src/interfaces/Form/Form.gd" type="Script" id=15]
+[ext_resource path="res://src/interfaces/Fields/child/ListField.tscn" type="PackedScene" id=16]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[node name="CreateShoppingList" instance=ExtResource( 4 )]
+script = ExtResource( 12 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer" index="1"]
+margin_top = 34.0
+margin_right = 1888.0
+margin_bottom = 1068.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 24
+custom_constants/margin_top = 12
+custom_constants/margin_left = 24
+custom_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer" index="0"]
+margin_left = 24.0
+margin_top = 12.0
+margin_right = 1864.0
+margin_bottom = 1022.0
+custom_constants/separation = -4
+
+[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" index="0"]
+margin_right = 1840.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 11 )
+text = "Shopping List Title"
+valign = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" index="1"]
+margin_top = 36.0
+margin_right = 1840.0
+margin_bottom = 66.0
+
+[node name="CreatedTime" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
+margin_right = 105.0
+margin_bottom = 30.0
+custom_colors/font_color = Color( 0.699081, 0.708049, 0.730469, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Created_time"
+
+[node name="ModifiedTime" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+margin_left = 109.0
+margin_right = 222.0
+margin_bottom = 30.0
+custom_colors/font_color = Color( 0.699081, 0.708049, 0.730469, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "Modified_time"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" index="2"]
+margin_top = 62.0
+margin_right = 1840.0
+margin_bottom = 94.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" index="3"]
+margin_top = 90.0
+margin_right = 1840.0
+margin_bottom = 930.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 24
+
+[node name="IngredientsListField" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="0" instance=ExtResource( 16 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 894.0
+margin_bottom = 840.0
+field_id = "ingredients"
+
+[node name="VSeparator" type="VSeparator" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="1"]
+margin_left = 918.0
+margin_right = 922.0
+margin_bottom = 840.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2" index="2"]
+margin_left = 946.0
+margin_right = 1840.0
+margin_bottom = 840.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="IngredientForm" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" index="0"]
+margin_right = 894.0
+margin_bottom = 118.0
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/IngredientForm" index="0"]
+margin_right = 894.0
+margin_bottom = 118.0
+custom_constants/separation = 8
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/IngredientForm/VBoxContainer" index="0"]
+margin_right = 894.0
+margin_bottom = 30.0
+custom_constants/shadow_offset_y = 0
+custom_fonts/font = ExtResource( 9 )
+text = "Ajouter un ingrédient"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/IngredientForm/VBoxContainer" index="1"]
+margin_top = 38.0
+margin_right = 894.0
+margin_bottom = 74.0
+custom_constants/separation = 6
+
+[node name="QuantityField" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/IngredientForm/VBoxContainer/HBoxContainer" index="0" instance=ExtResource( 7 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 294.0
+margin_bottom = 36.0
+field_id = "quantity"
+title_visible = false
+
+[node name="UnitField" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/IngredientForm/VBoxContainer/HBoxContainer" index="1" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 300.0
+margin_right = 594.0
+margin_bottom = 36.0
+field_id = "unit"
+is_required = false
+title_visible = false
+placeholder_label = "Unité"
+only_suggestion = true
+approximate = true
+limit = 8
+popup_pos = 1
+
+[node name="IngredientField" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/IngredientForm/VBoxContainer/HBoxContainer" index="2" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 600.0
+margin_right = 894.0
+margin_bottom = 36.0
+field_id = "ingredient"
+title_visible = false
+placeholder_label = "Ingrédient"
+popup_pos = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/IngredientForm/VBoxContainer" index="2"]
+margin_top = 82.0
+margin_right = 894.0
+margin_bottom = 118.0
+custom_constants/separation = 10
+
+[node name="AdditionalField" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/IngredientForm/VBoxContainer/HBoxContainer2" index="0" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 389.0
+margin_bottom = 36.0
+field_id = "add"
+is_required = false
+title_visible = false
+placeholder_text = "Complément"
+
+[node name="SelectField" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/IngredientForm/VBoxContainer/HBoxContainer2" index="1" instance=ExtResource( 8 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 399.0
+margin_right = 788.0
+margin_bottom = 36.0
+field_id = "link_r"
+is_required = false
+title_visible = false
+default_option = "Aucune recette liée"
+
+[node name="Add" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/IngredientForm/VBoxContainer/HBoxContainer2" index="2"]
+margin_left = 798.0
+margin_right = 894.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 96, 36 )
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 9 )
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/focus = ExtResource( 1 )
+custom_styles/disabled = ExtResource( 1 )
+custom_styles/normal = ExtResource( 1 )
+text = "Ajouter"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" index="1"]
+margin_top = 122.0
+margin_right = 894.0
+margin_bottom = 154.0
+custom_constants/separation = 32
+
+[node name="RecipesList" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer" index="2"]
+margin_top = 158.0
+margin_right = 894.0
+margin_bottom = 840.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/RecipesList" index="0"]
+margin_right = 894.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 14 )
+text = "Recettes"
+
+[node name="RecipesListField" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/RecipesList" index="1" instance=ExtResource( 16 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 44.0
+margin_right = 894.0
+margin_bottom = 682.0
+field_id = "recipes"
+is_required = false
+
+[node name="Control2" type="Control" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" index="4"]
+margin_top = 926.0
+margin_right = 1840.0
+margin_bottom = 950.0
+rect_min_size = Vector2( 0, 24 )
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" index="5"]
+margin_top = 946.0
+margin_right = 1840.0
+margin_bottom = 982.0
+custom_constants/separation = 12
+alignment = 2
+
+[node name="Cancel" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" index="0" instance=ExtResource( 6 )]
+margin_left = 1572.0
+margin_top = 0.0
+margin_right = 1700.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 128, 36 )
+size_flags_horizontal = 0
+size_flags_vertical = 3
+text = "Annuler"
+
+[node name="Save" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3" index="1" instance=ExtResource( 6 )]
+margin_left = 1712.0
+margin_top = 0.0
+margin_right = 1840.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 128, 36 )
+size_flags_horizontal = 0
+size_flags_vertical = 3
+text = "Sauvegarder"
+
+[node name="Control3" type="Control" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" index="6"]
+margin_top = 978.0
+margin_right = 1840.0
+margin_bottom = 1010.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="ColorRect" type="ColorRect" parent="." index="1"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.486275 )
+
+[node name="EditIngredientPopup" type="Popup" parent="." index="2"]
+margin_right = 496.0
+margin_bottom = 536.0
+rect_min_size = Vector2( 496, 0 )
+popup_exclusive = true
+
+[node name="Panel" type="Panel" parent="EditIngredientPopup" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MarginContainer" type="MarginContainer" parent="EditIngredientPopup/Panel" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 24
+custom_constants/margin_top = 12
+custom_constants/margin_left = 24
+custom_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EditIngredientPopup/Panel/MarginContainer" index="0"]
+margin_left = 24.0
+margin_top = 12.0
+margin_right = 472.0
+margin_bottom = 524.0
+custom_constants/separation = 6
+
+[node name="Label" type="Label" parent="EditIngredientPopup/Panel/MarginContainer/VBoxContainer" index="0"]
+margin_right = 448.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 11 )
+text = "Modifier un ingrédient"
+
+[node name="Control" type="Control" parent="EditIngredientPopup/Panel/MarginContainer/VBoxContainer" index="1"]
+margin_top = 46.0
+margin_right = 448.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="IngredientField" parent="EditIngredientPopup/Panel/MarginContainer/VBoxContainer" index="2" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 62.0
+margin_right = 448.0
+margin_bottom = 132.0
+size_flags_vertical = 1
+field_id = "ingredient"
+title = "Nom de l'ingrédient"
+popup_pos = 1
+
+[node name="InputField" parent="EditIngredientPopup/Panel/MarginContainer/VBoxContainer" index="3" instance=ExtResource( 5 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 138.0
+margin_right = 448.0
+margin_bottom = 208.0
+size_flags_vertical = 1
+field_id = "add"
+is_required = false
+title = "Complément d'ingrédient"
+
+[node name="QuantityField" parent="EditIngredientPopup/Panel/MarginContainer/VBoxContainer" index="4" instance=ExtResource( 7 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 214.0
+margin_right = 448.0
+margin_bottom = 284.0
+size_flags_vertical = 1
+field_id = "quantity"
+title = "Quantité"
+
+[node name="IngredientField2" parent="EditIngredientPopup/Panel/MarginContainer/VBoxContainer" index="5" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 290.0
+margin_right = 448.0
+margin_bottom = 360.0
+size_flags_vertical = 1
+field_id = "unit"
+is_required = false
+title = "Unité"
+popup_pos = 1
+
+[node name="SelectField" parent="EditIngredientPopup/Panel/MarginContainer/VBoxContainer" index="6" instance=ExtResource( 8 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 366.0
+margin_right = 448.0
+margin_bottom = 436.0
+size_flags_vertical = 1
+field_id = "link_r"
+is_required = false
+title = "Lié à la recette"
+default_option = "Aucune recette liée"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EditIngredientPopup/Panel/MarginContainer/VBoxContainer" index="7"]
+margin_top = 442.0
+margin_right = 448.0
+margin_bottom = 512.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 24
+alignment = 2
+
+[node name="Cancel" parent="EditIngredientPopup/Panel/MarginContainer/VBoxContainer/HBoxContainer" index="0" instance=ExtResource( 6 )]
+margin_left = 202.0
+margin_top = 17.0
+margin_right = 298.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 96, 36 )
+text = "Annuler"
+
+[node name="Save" parent="EditIngredientPopup/Panel/MarginContainer/VBoxContainer/HBoxContainer" index="1" instance=ExtResource( 6 )]
+margin_left = 322.0
+margin_top = 17.0
+margin_right = 448.0
+margin_bottom = 53.0
+rect_min_size = Vector2( 126, 36 )
+text = "Sauvegarder"
+
+[node name="EditForm" type="Node" parent="EditIngredientPopup" index="1"]
+script = ExtResource( 15 )
+mode = 2
+fields = [ NodePath("../Panel/MarginContainer/VBoxContainer/IngredientField"), NodePath("../Panel/MarginContainer/VBoxContainer/InputField"), NodePath("../Panel/MarginContainer/VBoxContainer/QuantityField"), NodePath("../Panel/MarginContainer/VBoxContainer/IngredientField2"), NodePath("../Panel/MarginContainer/VBoxContainer/SelectField") ]
+validation_button = NodePath("../Panel/MarginContainer/VBoxContainer/HBoxContainer/Save")
+cancel_button = NodePath("../Panel/MarginContainer/VBoxContainer/HBoxContainer/Cancel")
+
+[node name="AddIngredientForm" type="Node" parent="." index="3"]
+script = ExtResource( 15 )
+fields = [ NodePath("../Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/IngredientForm/VBoxContainer/HBoxContainer/QuantityField"), NodePath("../Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/IngredientForm/VBoxContainer/HBoxContainer/UnitField"), NodePath("../Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/IngredientForm/VBoxContainer/HBoxContainer/IngredientField"), NodePath("../Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/IngredientForm/VBoxContainer/HBoxContainer2/AdditionalField"), NodePath("../Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/IngredientForm/VBoxContainer/HBoxContainer2/SelectField") ]
+validation_button = NodePath("../Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/IngredientForm/VBoxContainer/HBoxContainer2/Add")
+cancel_button = NodePath("../Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/Cancel")
+
+[node name="ListForm" type="Node" parent="." index="4"]
+script = ExtResource( 15 )
+mode = 2
+fields = [ NodePath("../Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/IngredientsListField"), NodePath("../Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer/RecipesList/RecipesListField") ]
+validation_button = NodePath("../Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/Save")
+cancel_button = NodePath("../Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3/Cancel")
+
+[connection signal="data_collected" from="EditIngredientPopup/EditForm" to="." method="_on_EditForm_data_collected"]
+[connection signal="form_aborted" from="EditIngredientPopup/EditForm" to="." method="_on_EditForm_form_aborted"]
+[connection signal="data_collected" from="AddIngredientForm" to="." method="_on_AddIngredientForm_data_collected"]
+[connection signal="data_collected" from="ListForm" to="." method="_on_ListForm_data_collected"]
+[connection signal="form_aborted" from="ListForm" to="." method="_on_ListForm_form_aborted"]

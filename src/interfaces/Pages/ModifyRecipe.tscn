@@ -5,6 +5,7 @@
 
 [node name="ModifyRecipe" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+page_name = "Modifier ma recette"
 
 [node name="TitleField" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" index="0"]
 tooltip_infos = "True"

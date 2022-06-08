@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/fonts/PT-Italic_16.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/textures/icons/view.png" type="Texture" id=2]
+[ext_resource path="res://src/interfaces/Items/Recipe_CreateShoppingList_Item.gd" type="Script" id=3]
+
+[node name="Recipe_CreateShoppingList_Item" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_top = 525.0
+margin_right = 1884.0
+margin_bottom = 555.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Recette : "
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+margin_left = 1888.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 32, 0 )
+focus_mode = 0
+enabled_focus_mode = 0
+icon = ExtResource( 2 )
+flat = true
+expand_icon = true
+
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

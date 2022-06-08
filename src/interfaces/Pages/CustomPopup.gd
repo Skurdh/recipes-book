@@ -16,8 +16,11 @@ export(bool) var can_enlarge: bool = true
 # Public variables
 #var showed: bool = false
 var enlarged: bool = false
+var current_loading_cover: PanelContainer
 
 # Onready variables
+onready var loading_cover: PackedScene = preload("res://src/interfaces/LoadingForm.tscn")
+
 
 # Setter Getter Functions
 
@@ -53,6 +56,15 @@ func custom_popup_centered() -> void:
 
 func refresh() -> void:
 	pass
+
+
+func display_loading(value: bool, msg: String = "Chargement en cours...") -> void:
+	if value:
+		current_loading_cover = loading_cover.instance()
+		$Panel/MarginContainer.add_child(current_loading_cover)
+		current_loading_cover.get_node("CenterContainer/VBoxContainer/Label").set_text(msg)
+	else:
+		current_loading_cover.queue_free()
 
 
 # Signal functions
